@@ -1,0 +1,15 @@
+[x] connect to local mongodb in node
+[x] make db connection shared (connect once and allow other files to use connection instance)
+[] take input 
+[] query db(s) 
+[] sort data  
+[] return array to ejs 
+[] display data
+[] rate-limiting/all other node stuff
+[] nginx 
+[] move to linode server
+[] install/config everything
+[] minify files
+[] domain name
+[] ssl certificate
+[] set up live deploy

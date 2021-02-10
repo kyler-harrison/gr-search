@@ -1,0 +1,10 @@
+- import json (form: [{"word_key": "word", "title_vals": {"title0": val0, ..., "titleN": valN}}, ..., {...}])
+- need to install extra mongo tools (download/install process probably different in ubuntu)
+- this should create a db of dbName with a collection of collectionName from the json file
+mongoimport --db dbName --collection collectionName --file fileName.json --jsonArray
+
+- switch to db (--db given above was bookData)
+use bookData
+
+- query db for word "call" (--collection given above was wordVals)
+db.wordVals.find({word_key: "call"})

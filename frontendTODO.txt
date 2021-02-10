@@ -1,0 +1,8 @@
+[] set up all elements to be responsive/resizeable - minimal as possible
+[] make nice little graphic/animation
+[] nice background, nice contrasting colors
+[] nice font
+[] succint message
+[] nice search bar
+[] nice search "ask me" button
+[] each element should be a nice little rounded div square thing (description .... ?)
