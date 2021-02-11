@@ -6,7 +6,7 @@ var _db;
 // define initial connection to mongo and subsequent db objects after connected 
 module.exports = {
     connectToServer: async (callback) => {
-        await MongoClient.connect(url, {useUnifiedTopology: true}, (err, client) => {
+        MongoClient.connect(url, {useUnifiedTopology: true}, (err, client) => {
             _db = client.db(dbName);
             return callback(err);
         });
