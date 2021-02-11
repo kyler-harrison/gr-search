@@ -1,4 +1,25 @@
 <!DOCTYPE html>
 <html>
-  hello there
+  <div>Graphic here</div>
+  <div>Description here</div>
+  <div>
+    <form action="/" method="POST">
+			<div>
+				<input
+					type="text"
+					placeholder="Describe what you want to read..."
+					name="query"
+					value="<%= originalQuery %>"
+				>
+			</div>
+		  <div>
+				<button type="submit">Go</button>
+			</div>
+			<div><%= message %></div>
+			<div>
+				Results container
+				<div>loop through and put stuff here from objs</div>
+			</div>
+    </form>
+  </div>
 </html>
