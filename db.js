@@ -1,3 +1,4 @@
+// example mongo connection 
 var mongo = require("mongodb");
 var MongoClient = mongo.MongoClient;
 var url = "mongodb://localhost:27017/";
