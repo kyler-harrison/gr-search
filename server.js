@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const dotenv = require("dotenv").config();
 const rateLimit = require("express-rate-limit");
-const mongoUtil = require("./mongoUtil.js");
+const database = require("./dbConfig.js");
 
 // settings
 const app = express();
@@ -19,20 +19,19 @@ app.use(session({
 	saveUninitialized: false,
 }));
 
-// connect to mongo db once
-mongoUtil.connectToServer((err, client) => {
-	if (err) console.log(err);
+// connect to mongodb
+database.connect();
 
-	// require routers that use the connection to mongo after this has script has connected, db object in them will be none if don't
-	const indexRouter = require("./routes/index");
-	// use route that queries db
-	app.use("/", indexRouter);
-	// 404 error on non-existing page
-	app.use((req, res) => {
-		res.send("404 error dude");
-	});
+// routers
+const indexRouter = require("./routes/index");
+
+// use routers 
+app.use("/", indexRouter);
+
+// 404 error on non-existing page
+app.use((req, res) => {
+	res.send("404 error dude");
 });
-
 
 // using a proxy like nginx, should probably read into this more
 //app.set("trust proxy", true);
