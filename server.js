@@ -19,7 +19,7 @@ app.use(session({
 	saveUninitialized: false,
 }));
 
-// connect to mongodb
+// connect to mongodb, should be good to use .get() method in other routers
 database.connect();
 
 // routers
@@ -45,7 +45,6 @@ const limiter = rateLimit({
 		handler: function(req, res) {res.send("no")}
 });
 app.use(limiter);
-
 
 // listen on port listed in .env
 app.listen(process.env.NODE_PORT)
