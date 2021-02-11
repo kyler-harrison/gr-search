@@ -1,5 +1,4 @@
 // mongodb configuration, allows one connect and multiple uses across other files, code from: https://branche.online/mongodb-with-promises/
-
 const mongoDriver = require("mongodb");
 const uri = "mongodb://localhost:" + process.env.MONGO_URI + "/";
 const dbName = "bookData";
