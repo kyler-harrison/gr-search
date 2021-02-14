@@ -40,7 +40,9 @@ def valid_word(word):
 # desc.: given text string, return list of valid/filtered words to be used in query
 def word_filter(text):
     valid_words = []  # for valid words to return
-    word_ls = nltk.word_tokenize(text)  # break text str into ls of words
+
+    # break text str into set of unique words (not going to query duplicates or count them towards score twice)
+    word_ls = set(nltk.word_tokenize(text))
 
     if len(word_ls) > MAX_QUERY_LEN:
         return [], "max_len"
