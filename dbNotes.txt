@@ -8,3 +8,4 @@ use bookData
 
 - query db for word "call" (--collection given above was wordVals)
 db.wordVals.find({word_key: "call"})
+
