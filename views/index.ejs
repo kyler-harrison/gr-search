@@ -18,7 +18,12 @@
 			<div><%= message %></div>
 			<div>
 				Results container
-				<div>loop through and put stuff here from objs</div>
+				<% if (dataArr != null) { %>
+					<% for (var infoObj of dataArr) { %>
+						<span>donzo</span>
+						<div><%= infoObj %></div>
+					<% } %>
+				<% } %>
 			</div>
     </form>
   </div>
