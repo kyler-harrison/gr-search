@@ -3,8 +3,9 @@ const router = express.Router();
 const axios = require("axios");
 const asyncRedis = require("async-redis");
 const database = require("../dbConfig.js");
-const wordCollection = "wordVals";
-const metaCollection = "metadata";  // TODO this doesn't exist yet, search key should be "title_key"
+
+const wordCollection = "wordVals";  // mongo collection name of {word_key: word, title_vals: {title: score}} documents
+const metaCollection = "titleMetadata";  // mongo collection name of {title_key: title, title_data: {...}} documents 
 const maxResultsReturn = 20;  // number of titles to return
 
 // connect async redis client
@@ -147,8 +148,6 @@ router.post("/", async (req, res) => {
 	// take top N results
 	ratioScores = ratioScores.slice(0, maxResultsReturn);
 
-	// TODO metadata (need to change scrape and import json into mongo)
-
 	// query db, should push each Promise into array and resolve in same ranked order
 	var metaQueryPromises = [];  // array of metadata db query Promises
 	for (var titleTuple of ratioScores) {
@@ -164,6 +163,5 @@ router.post("/", async (req, res) => {
 	res.render("index.ejs", returnData);
 	return;
 });
-
 
 module.exports = router;
