@@ -20,8 +20,8 @@
 				Results container
 				<% if (dataArr != null) { %>
 					<% for (var infoObj of dataArr) { %>
-						<span>donzo</span>
-						<div><%= infoObj %></div>
+						<div><%= JSON.stringify(infoObj.title_data) %></div>
+						<br>
 					<% } %>
 				<% } %>
 			</div>
