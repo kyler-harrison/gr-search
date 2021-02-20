@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/stylesheets/index.css" />
+	</head>
 	<div class="main-container">
-		<div class="bot-container">
+		<div class="img-container">
 			<img src="https://bookoraclecoverimages.s3.amazonaws.com/defaultNoImgAvailable.png" class="bot-img" />
 		</div>
-		<div>Description here</div>
-		<div>
+		<div class="page-desciption">
+			Description here
+		</div>
+		<div class="search-container">
 			<form action="/" method="GET">
+				<input class="input-box" type="text" placeholder="Describe what you want to read..." name="search" value="<%= originalQuery %>">
 				<div>
-					<input
-						type="text"
-						placeholder="Describe what you want to read..."
-						name="search"
-						value="<%= originalQuery %>"
-					>
+					<button class="ask-button" type="submit">Ask</button>
 				</div>
-				<div>
-					<button type="submit">Go</button>
-				</div>
-				<div><%= message %></div>
-				<div>
+				<div class="return-message"><%= message %></div>
+				<div class="all-results-container">
 					Results container
 					<% if (dataArr != null) { %>
 						<% for (var infoObj of dataArr) { %>
-							<div><%= JSON.stringify(infoObj.title_data) %></div>
+							<div class="result-container"><%= JSON.stringify(infoObj.title_data) %></div>
 							<br>
 						<% } %>
 					<% } %>
