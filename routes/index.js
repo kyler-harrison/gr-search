@@ -13,16 +13,20 @@ const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
 const redisExpiration = 3600;  // seconds, == 1 hour
 
 router.get("/", async (req, res) => {
+	// TODO rando db query (might do on err cases - haven't tested):
+	// db.collectionName.aggregate([{ $sample: { size: 1 } }])
+
 	var query = req.query.search;  // user query (passed as param search, referenced as query throughout rest of this fun)
 	var returnData;  // init return json var
 
 	if (query == null) {
-		returnData = {originalQuery: null, dataArr: null, message: null};
+		returnData = {resStatus: "load", originalQuery: null, dataArr: null, message: null};
 		res.render("index.ejs", returnData);
 		return;
 	} 
 
-	returnData = {originalQuery: query, message: null, dataArr: null};  // at least return inputted query
+	// TODO change all return objects, rm originalQuery - no longer needed because not reloading - web dev wizard
+	returnData = {resStatus: null, originalQuery: query, message: null, dataArr: null};  // at least return inputted query
 	
 	// python server for text processing
 	var pyPortPath = "http://localhost:" + process.env.PY_PORT;
@@ -33,7 +37,8 @@ router.get("/", async (req, res) => {
 	// check if the query was too long
 	if (returnMessage == "max_len") {
 		returnData["message"] = "too many words pal, try < 50";
-		res.render("index.ejs", returnData);
+		res.send({"bo": "jackson"});
+		//res.render("index.ejs", returnData);
 		return;
 	}
 
@@ -43,7 +48,8 @@ router.get("/", async (req, res) => {
 	// py server returned no valid words
 	if (filteredQueryArray.length == 0) {
 		returnData["message"] = "No valid words";
-		res.render("index.ejs", returnData);
+		res.send({"bo": "jackson"});
+		//res.render("index.ejs", returnData);
 		return;
 	}
 	
@@ -95,7 +101,8 @@ router.get("/", async (req, res) => {
 	// no scores returned from db
 	if (finalWordResults.length == 0) {
 		returnData["message"] = "No results found";
-		res.render("index.ejs", returnData);
+		//res.render("index.ejs", returnData);
+		res.send({"bo": "jackson"});
 		return;
 	}
 
@@ -141,7 +148,8 @@ router.get("/", async (req, res) => {
 	// clean up and return data
 	returnData["message"] = "valid query";
 	returnData["dataArr"] = metaQueryResults;
-	res.render("index.ejs", returnData);
+	//res.render("index.ejs", returnData);
+	res.send({"bo": "jackson"});
 	return;
 });
 
