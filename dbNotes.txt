@@ -16,7 +16,10 @@ mongoimport --db dbName --collection collectionName --file fileName.json --jsonA
 C:/"Program Files"/MongoDB/Server/4.4/bin/mongoimport.exe --db bookData --collection titleMetadata --file C:/Users/kyler/pyguy/bookOracle/v6/data/title_data_json_arrays/02_13_2021_set0_0_100.json --jsonArray
 C:/"Program Files"/MongoDB/Server/4.4/bin/mongoimport.exe --db bookData --collection wordVals --file C:/Users/kyler/pyguy/bookOracle/v6/data/master_dict_json_arrays/02_13_2021_set0_0_100.json --jsonArray
 
-- switch to db (--db given above was bookData)
+- show all dbs 
+show dbs
+
+- switch to db (--db given above was bookData) (creates if not existing)
 use bookData
 
 - view collections in db
