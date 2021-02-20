@@ -2,7 +2,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const redis = require("redis");
 const dotenv = require("dotenv").config();
 const rateLimit = require("express-rate-limit");
 const database = require("./dbConfig.js");
