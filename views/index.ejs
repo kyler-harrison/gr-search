@@ -9,7 +9,7 @@
 	</head>
 	<div class="main-container">
 		<div class="img-container">
-			<img src="https://bookoraclecoverimages.s3.amazonaws.com/defaultNoImgAvailable.png" class="bot-img" />
+			<img src="https://bookoraclecoverimages.s3.amazonaws.com/defaultNoImgAvailable.png" class="bot-img"/>
 		</div>
 		<div class="page-desciption">
 			Description here
@@ -17,19 +17,13 @@
 		<div class="search-container">
 			<!-- TODO instead of form, let's do a simple ajax get in js on button click that gives a little load anim and no refresh -->
 			<!-- this may not even need to be ejs that way -->
-			<input class="input-box" type="text" placeholder="Describe what you want to read..." name="search" value="<%= originalQuery %>">
+			<input class="input-box" type="text" placeholder="Describe what you want to read..." name="search">
 			<div class="button-container">
 				<button class="ask-button">Ask</button>
 			</div>
 		</div>
 		<div class="all-results-container">
 			Results container
-			<% if (dataArr != null) { %>
-				<% for (var infoObj of dataArr) { %>
-					<div class="result-container"><%= JSON.stringify(infoObj.title_data) %></div>
-					<br>
-				<% } %>
-			<% } %>
 		</div>
 	</div>
 </html>
