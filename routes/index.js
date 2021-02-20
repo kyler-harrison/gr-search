@@ -12,37 +12,17 @@ const maxResultsReturn = 20;  // number of titles to return
 const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
 const redisExpiration = 3600;  // seconds, == 1 hour
 
-router.get("/", (req, res) => {
-	var returnData = {originalQuery: null, dataArr: null, message: null};
-	res.render("index.ejs", returnData);
-	return;
-});
+router.get("/", async (req, res) => {
+	var query = req.query.search;  // user query (passed as param search, referenced as query throughout rest of this fun)
+	var returnData;  // init return json var
 
-router.post("/", async (req, res) => {
-	var query = req.body.query;
-	var returnData = {originalQuery: query, message: null, dataArr: null};
+	if (query == null) {
+		returnData = {originalQuery: null, dataArr: null, message: null};
+		res.render("index.ejs", returnData);
+		return;
+	} 
 
-	/*
-	// TESTING redis
-	// set key val
-	redisClient.setex("urmom", 3600, JSON.stringify({"word": {"title": 0.2}}));
-	// get val from key, returns JSON string
-	var maxer = 100000;
-	var j = 0;
-	// TODO test async stuff, get array of words and see input-output order, do the Promise array thing like with db if needed
-	for (var i = 0; i < maxer; i++) {
-		redisClient.get("urmom", (err, data) => {
-			if (err) {
-				console.log("redis error");
-			} else {
-				if (i == 900) {
-					console.log(JSON.parse(data).word);
-				}
-			}
-		});
-	}
-	console.log("outside");
-	*/
+	returnData = {originalQuery: query, message: null, dataArr: null};  // at least return inputted query
 	
 	// python server for text processing
 	var pyPortPath = "http://localhost:" + process.env.PY_PORT;
@@ -158,6 +138,7 @@ router.post("/", async (req, res) => {
 	// resolve mongo meta query results
 	var metaQueryResults = await Promise.all(metaQueryPromises);
 
+	// clean up and return data
 	returnData["message"] = "valid query";
 	returnData["dataArr"] = metaQueryResults;
 	res.render("index.ejs", returnData);
@@ -165,3 +146,4 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
+
