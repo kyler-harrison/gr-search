@@ -11,9 +11,9 @@
 [x] return and display data to/on ejs 
 [] rate-limiting/all other node config stuff 
 [] nginx 
-[] change scrape script to write a metadata json instead of aws db push 
-[] figure out how to update indiv docs and how to update entire collection
-[] collect data (get up to a master json of ~10000, can reasonably get ~2000 per night) - new mongoimport each time or update?
+[x] change scrape script to write a metadata json instead of aws db push 
+[x] figure out how to update indiv docs and how to update entire collection
+[x] collect data (get up to a master json of ~10000, can reasonably get ~2000 per night) - new mongoimport each time or update?
 [] move to linode server
 [] install/config everything
 [] minify files
