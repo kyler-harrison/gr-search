@@ -19,3 +19,7 @@ body {
 .search-container {
 	background-color: red;
 }
+
+.return-message {
+	background-color: green;
+}
