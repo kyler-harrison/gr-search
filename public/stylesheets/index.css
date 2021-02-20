@@ -15,3 +15,7 @@ body {
 	overflow: hidden;
 	flex-direction: column;
 }
+
+.search-container {
+	background-color: red;
+}
