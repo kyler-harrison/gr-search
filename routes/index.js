@@ -25,7 +25,6 @@ router.get("/", async (req, res) => {
 		return;
 	} 
 
-	// TODO change all return objects, rm originalQuery - no longer needed because not reloading - web dev wizard
 	returnData = {resStatus: null, message: null, dataArr: null};  // at least return inputted query
 	
 	// python server for text processing
@@ -83,7 +82,6 @@ router.get("/", async (req, res) => {
 	var queryPromises = [];
 	for (var word of wordsToQuery) {
 		// pushes pending db Promise into array, allows multiple queries to run in parallel (I think)
-		// TODO error handling, if this doesn't find it returns null, so don't add if null - or just use the try/catch on the following loop
 		queryPromises.push(database.get().collection(wordCollection).findOne({word_key: word}));
 	}
 
@@ -91,23 +89,20 @@ router.get("/", async (req, res) => {
 	var queryResults = await Promise.all(queryPromises);
 	
 	// iterate through queries and add results to final word array and cache
-	console.log(queryResults);
-	try {
-		for (var queryObj of queryResults) {
-			// put object of {title: score} in the array
+	for (var queryObj of queryResults) {
+		// put object of {title: score} in the array
+		if (queryObj != null) {
 			finalWordResults.push(queryObj["title_vals"]);
 
 			// add this word and its data to redis cache
 			asyncRedisClient.setex(queryObj["word_key"], redisExpiration, JSON.stringify(queryObj["title_vals"]));
 		}
-	} catch (err) {
-		finalWordResults = [];
 	}
 	
 	// no scores returned from db
 	if (finalWordResults.length == 0) {
 		returnData["resStatus"] = "no_results"
-		returnData["message"] = "I don't recognize any of those words... Try again with a different description.";
+		returnData["message"] = "Hmmm... I don't recognize any of those words. Input a different description.";
 		res.send(returnData);
 		return;
 	}
@@ -156,6 +151,10 @@ router.get("/", async (req, res) => {
 	returnData["message"] = "I recommend...";
 	returnData["dataArr"] = metaQueryResults;
 	//res.render("index.ejs", returnData);
+	for (var urmom of metaQueryResults) {
+		console.log(urmom);
+		console.log("\n");
+	}
 	res.send(returnData);
 	return;
 });
