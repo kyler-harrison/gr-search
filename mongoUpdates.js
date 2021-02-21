@@ -90,15 +90,59 @@ async function wordValsUpdate(wordJsonArr) {
 	}
 }
 
- 
+
+// update all fields in a collection with an encoded uri
+async function addAmzField(amzBaseURL, amzCode) {
+	console.time("updateField");
+	try {
+		await mongoClient.connect();
+		const database = mongoClient.db(dbName);
+		const collection = database.collection(wordCollection);
+
+		// get every doc (cursor is like a yield generator thing)
+		var cursor = await database.collection(metaCollection).find();
+
+		var updatePromises = [];
+		// set field in each doc found
+		await cursor.forEach((doc) => {
+			// get data needed for url and update
+			var docTitleKey = doc.title_key;
+			var docTitle = doc.title_data.unfiltered_title;
+
+			// TODO change this to whatever form it's supposed to be
+			var fullURL = amzBaseURL + docTitle + "&whatevertagparam=" + amzCode;
+			var encodedURL = encodeURI(fullURL);
+
+			// push promise so that updates run async, adds url to title_data obj (what is returned to client side)
+			updatePromises.push(database.collection(metaCollection).updateOne({title_key: docTitleKey}, {$set: {"title_data.amz_link": encodedURL}}));
+		});
+
+		// let promises resolve
+		await Promise.all(updatePromises);
+
+	} catch (err) {
+		console.log("error");
+		console.log(err);
+	} finally {
+		mongoClient.close();
+		console.timeEnd("updateField");
+	}
+}
+
 /*
 var rawTitle = fs.readFileSync("/mnt/c/Users/kyler/pyguy/bookOracle/v6/data/title_data_json_arrays/set0_2100_4100.json");
 var titleJsonArr = JSON.parse(rawTitle);
 titleInsert(titleJsonArr, metaCollection);
 */
 
+/*
 var rawWords = fs.readFileSync("/mnt/c/Users/kyler/pyguy/bookOracle/v6/data/master_dict_json_arrays/set0_2100_4100.json");
 var wordJsonArr = JSON.parse(rawWords);
 wordValsUpdate(wordJsonArr);
+*/
+
+var amzBaseURL = "https://amazon.com/s?k=";
+var imaginaryCode = "ABC 123";
+addAmzField(amzBaseURL, imaginaryCode);
 
 
