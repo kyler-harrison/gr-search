@@ -8,16 +8,12 @@ body {
 	background-color: cyan;
 }
 
-.main-container, .search-container, .search-form, .all-results-container {
+.main-container, .search-container, .main-message-container, .all-results-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
 	flex-direction: column;
-}
-
-.search-container {
-	background-color: red;
 }
 
 .return-message {
