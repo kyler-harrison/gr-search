@@ -1,5 +1,16 @@
+String.prototype.format = function() {
+    var s = this,
+        i = arguments.length;
+
+    while (i--) {
+		        s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+		    }
+    return s;
+}
+
 function getQuery(query) {
 	// TODO load spinny image
+	
 	// clear out any elems/messages for each new query
 	var messageContainer = ".main-message-container";
 	$(messageContainer).empty();
@@ -17,16 +28,20 @@ function getQuery(query) {
 			data: {search: query},
 			success: (result) => {
 				// TODO stop displaying load spinny image
+
 				console.log(result);
 				var message = result.message;
 				var resStatus = result.resStatus;
 
+				// if no error has been returned: display data
 				if (resStatus == "valid") {
 					var dataArr = result.dataArr;
 					for (var dataObj of dataArr) {
-						var dataId = dataObj["title_key"] + "_num" + Math.floor(Math.random() * 10000);
-						var dataElem = "<div id='" + dataId + "' class='result-container'>" + dataObj["title_key"] + "</div>"
-						$(baseElemId).append(dataElem)
+						var dataId = "title" + Math.floor(Math.random() * 100000);
+						var dataBaseElem = "<div id='{0}' class='result-container'>{1}<div class='subby'>urmom</div></div>".format(dataId, dataObj['unfiltered_title']);
+						// TODO now append the sub elems of the main data elem
+
+						$(baseElemId).append(dataBaseElem);
 					}
 				} else {
 					console.log("we hit the else");
