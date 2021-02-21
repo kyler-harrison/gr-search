@@ -146,15 +146,17 @@ router.get("/", async (req, res) => {
 	// resolve mongo meta query results
 	var metaQueryResults = await Promise.all(metaQueryPromises);
 
+	// get what to send back
+	var finalResults = [];
+	for (var metaQueryResult of metaQueryResults) {
+		finalResults.push(metaQueryResult.title_data);
+	}
+
 	// clean up and return data
 	returnData["resStatus"] = "valid";
 	returnData["message"] = "I recommend...";
-	returnData["dataArr"] = metaQueryResults;
+	returnData["dataArr"] = finalResults;
 	//res.render("index.ejs", returnData);
-	for (var urmom of metaQueryResults) {
-		console.log(urmom);
-		console.log("\n");
-	}
 	res.send(returnData);
 	return;
 });
