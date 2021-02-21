@@ -1,0 +1,52 @@
+- need to install redis on ubuntu machine (20.04 here)
+- NOTE using async-redis instead of the original redis, it seems to default to the same port and settings, so
+  I think all of this stuff is still valid
+- on boot (if you get a port 6379 connection error)
+sudo service redis-server start
+
+- update stuff first
+sudo apt update
+
+- install redis
+sudo apt install redis-server
+
+- change "supervised no" to "supervised systemd" in config file
+sudo vim /etc/redis/redis.conf
+
+- restart service
+sudo service redis-server restart
+
+- see service options
+sudo service redis-server
+
+- check service status
+sudo service redis-server status
+- I believe it runs on port 6379 by default
+
+- open cmd line
+redis-cli
+("exit" to leave)
+
+- enter cli, set value in store, get value, exit cli, restart service, enter cli, get value again (persistence check)
+redis-cli
+set test "tester"
+get test
+exit
+sudo service redis-server restart
+redis-cli
+get test
+
+- ensure that redis is only accessible through localhost, in config
+bind 127.0.0.1 ::1
+- was already set by default
+- check with netstat
+
+- more info (should probably set up the authentication):
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04
+
+
+
+
+
+
+
