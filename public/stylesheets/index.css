@@ -19,3 +19,14 @@ body {
 .return-message {
 	background-color: green;
 }
+
+.result-container {
+	height: 250px;
+	width: 500px;
+	background-color: red;
+	margin-top: 3%;
+}
+
+.subby {
+	background-color: yellow;
+}
