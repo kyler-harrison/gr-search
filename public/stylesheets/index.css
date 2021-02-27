@@ -1,3 +1,19 @@
+:root {
+	--white-0: #f2f2f2;
+	--white-1: #d9d9d9;
+	--black-0: #0d0d0d;
+	--black-1: #222222; 
+	--black-2: #333333;
+	--blue-0: #00004d;
+	--blue-1: #000099;
+
+	/*
+	--button-blue-0: #43EAB2;
+	--button-blue-0: #70A9FF;
+	--button-blue-1: #66a3ff;
+	*/
+}
+
 html {
 	height: 100% !important;
 	font-size: 100%;
@@ -6,7 +22,7 @@ html {
 body {
 	margin: 0;
 	overflow-x: hidden;
-	background-image: linear-gradient(to top, #000099, black);
+	background-image: linear-gradient(to top left, #00004d, #000000);
 }
 
 .main-container, .search-container, .main-message-container, .all-results-container {
@@ -27,23 +43,24 @@ body {
 	justify-content: center;
 	overflow: hidden;
 	flex-direction: row;
-	height: 25rem;
+	height: 20rem;
 	width: 45rem;
-	background-color: red;
+	background-color: var(--white-0);
 	margin-top: 3%;
+	border-radius: 0.75rem;
+	border: 0.1rem solid var(--white-1);
 }
 
 .data-left {
 	height: 96%;
 	width: 31%;
 	margin-right: 1%;
-	background-color: purple;
 }
 
 .data-right {
 	height: 96%;
 	width: 66%;
-	background-color: black;
+	margin-right: 1%;
 }
 
 .img-container {
@@ -51,23 +68,16 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	/* background-color: blue; */
 	overflow: hidden;
 }
 
 .cover-img {
-	/*
-	max-width: 150px;
-	height: auto;
-	*/
-	height: 100%;
+	height: 95%;
 	width: auto;
 }
 
 .book-title, .book-author, .book-description, .amz-container {
-	background-color: white;
-	margin-top: 1rem;
-	padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+	padding: 0.2rem 0.25rem 0.2rem 0.25rem;
 	overflow: hidden;
 
 	/* use this for shortening long stuff (single line) to ellipsis 
@@ -84,18 +94,24 @@ body {
 }
 
 .book-title {
-	margin-top: 0.5rem;
+	margin-top: 1.302%;
 	max-height: 4rem;
 	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--dark-0);
+	border-bottom: 0.1rem solid var(--white-1);
 }
 
 .book-author {
+	margin-top: 1.302%;
 	font-size: 1.25rem;
+	color: var(--black-1);
 }
 
 .book-description {
+	margin-top: 1.302%;
 	font-size: 1rem;
-	max-height: 7rem;  /* this and -webkit-line-clamp are sensitive to each other */
+	max-height: 6.92rem;  /* this and -webkit-line-clamp are sensitive to each other */
 	word-wrap: break-word; 
 	display: -webkit-box;
 	-webkit-line-clamp: 6;
@@ -103,35 +119,40 @@ body {
 }
 
 .amz-container {
+	border-top: 0.1rem solid var(--white-1);
+	margin-top: 2%;
+	padding-top: 1%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 3rem;
-	font-size: 1.25rem;
+	height: 15.625%;
 }
 
 .amz-button {
-	background-color: lime;
-	border-radius: 0.25rem;
-	color: black;
-	background-color: red;
-	border: 0.25rem solid black;
+	border-radius: 0.15rem;
+	border: 0.25rem solid var(--blue-0);
 	outline: none;
 	cursor: pointer;
 	height: 2.5rem;
 	width: 5rem;
 	overflow: hidden;
+	background-color: var(--blue-0);
+}
+
+.amz-button:hover {
+	background-color: #000000;
+	border: 0.25rem solid black;
 }
 
 .amz-link {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	height: 100%;
 	width: 100%;
 	text-decoration: none;
+	color: var(--white-0);
 }
-
 
 
