@@ -4,14 +4,14 @@
 	--black-0: #0d0d0d;
 	--black-1: #222222; 
 	--black-2: #333333;
-	--blue-0: #00004d;
-	--blue-1: #000099;
-
-	/*
-	--button-blue-0: #43EAB2;
-	--button-blue-0: #70A9FF;
-	--button-blue-1: #66a3ff;
-	*/
+	--blue-0: #000033;
+	--blue-1: #00004d;
+	--blue-2: #000099;
+	--blue-3: #1414ff;
+	--blue-4: #00a8f3;
+	--blue-5: #009de6;
+	--blue-6: #008bcc;
+	font-family: "Monterserrat", sans-serif;
 }
 
 html {
@@ -22,7 +22,8 @@ html {
 body {
 	margin: 0;
 	overflow-x: hidden;
-	background-image: linear-gradient(to top left, #00004d, #000000);
+	background-color: #000000;
+	/* background: linear-gradient(to top, #262626, #000000) fixed; */
 }
 
 .main-container, .search-container, .main-message-container, .all-results-container {
@@ -31,6 +32,77 @@ body {
 	justify-content: center;
 	overflow: hidden;
 	flex-direction: column;
+}
+
+.bot-container {
+	margin-top: 2%;
+}
+
+.bot-img {
+	max-width: 15rem;
+	height: auto;
+}
+
+.page-description {
+	text-align: center;
+	width: 35rem;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	color: var(--white-0);
+	font-size: 1.25rem;
+}
+
+.input-box {
+	padding-right: 0.25rem;
+	padding-left: 0.25rem;
+	width: 35rem;
+	height: 2.5rem;
+	font-size: 1.25rem;
+	margin-bottom: 1%;
+	border-radius: 0.75rem;
+	border: 0.25rem solid #222222;
+	outline: none;
+	background-color: var(--white-0);
+}
+
+.input-box:focus {
+	border: 0.25rem solid var(--blue-4);
+}
+
+.ask-button {
+	width: 5rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	outline: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: var(--black-0);
+	border: 0.25rem solid var(--blue-4);
+	background-color: var(--blue-4);
+	cursor: pointer;
+}
+
+.ask-button:hover {
+	border: 0.25rem solid var(--blue-5);
+	background-color: var(--blue-5);
+}
+
+.all-results-container {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.load-text {
+	margin-top: 2%;
+	color: var(--white-0);
+	font-size: 2.5rem;
+}
+
+.load-gif {
+	margin-top: 2%;
+	margin-right: 13%;
+	width: 40rem;
+	background-color: transparent;
 }
 
 .return-message {
@@ -43,12 +115,12 @@ body {
 	justify-content: center;
 	overflow: hidden;
 	flex-direction: row;
-	height: 20rem;
+	height: 18rem;
 	width: 45rem;
 	background-color: var(--white-0);
 	margin-top: 3%;
 	border-radius: 0.75rem;
-	border: 0.1rem solid var(--white-1);
+	border: 0.1rem solid var(--white-0);
 }
 
 .data-left {
@@ -69,6 +141,7 @@ body {
 	justify-content: center;
 	height: 100%;
 	overflow: hidden;
+	margin-top: 2%;
 }
 
 .cover-img {
@@ -130,18 +203,18 @@ body {
 
 .amz-button {
 	border-radius: 0.15rem;
-	border: 0.25rem solid var(--blue-0);
+	border: 0.25rem solid var(--blue-5);
 	outline: none;
 	cursor: pointer;
 	height: 2.5rem;
 	width: 5rem;
 	overflow: hidden;
-	background-color: var(--blue-0);
+	background-color: var(--blue-5);
 }
 
 .amz-button:hover {
-	background-color: #000000;
-	border: 0.25rem solid black;
+	background-color: var(--blue-6);
+	border: 0.25rem solid var(--blue-6);
 }
 
 .amz-link {
@@ -155,4 +228,10 @@ body {
 	color: var(--white-0);
 }
 
+@media screen and (max-width: 700px) {
+	.result-container {
+		height: 20rem;
+		width: 35rem;
+	}
 
+}
