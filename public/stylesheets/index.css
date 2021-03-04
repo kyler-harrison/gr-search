@@ -43,14 +43,21 @@ body {
 	height: auto;
 }
 
-.page-description {
-	text-align: center;
-	/* width: 35rem; */
-	width: 45%;
+.page-description-container {
 	margin-top: 1%;
 	margin-bottom: 2%;
+}
+
+.page-description {
+	text-align: center;
+	width: 35rem;
+	/* width: 45%; */
 	color: var(--white-0);
 	font-size: 1.25rem;
+}
+
+.search-container {
+	margin-bottom: 2%;
 }
 
 .input-box {
@@ -59,7 +66,6 @@ body {
 	width: 35rem;
 	height: 2.5rem;
 	font-size: 1.25rem;
-	margin-bottom: 1%;
 	border-radius: 0.75rem;
 	border: 0.25rem solid #222222;
 	outline: none;
@@ -99,11 +105,14 @@ body {
 	font-size: 2.5rem;
 }
 
-.load-gif {
+.load-gif-container {
 	margin-top: 2%;
-	margin-right: 13%;
+	/* margin-right: 13%; */
+}
+
+.load-gif {
 	width: 40rem;
-	background-color: transparent;
+	height: auto;
 }
 
 .return-message {
@@ -240,6 +249,33 @@ body {
 		height: auto;
 	}
 
+	.page-description {
+		width: 35rem;
+		font-size: 1.25rem;
+	}
+
+	.input-box {
+		padding-right: 0.25rem;
+		padding-left: 0.25rem;
+		width: 35rem;
+		height: 2.5rem;
+		font-size: 1.25rem;
+		border-radius: 0.75rem;
+		border: 0.25rem solid #222222;
+	}
+
+	.ask-button {
+		width: 5rem; /* will be input box width / 7 */
+		height: 3rem;  /* will be 0.6 * ask-button width */
+		border-radius: 0.75rem;
+		font-size: 1.25rem;
+		border: 0.25rem solid var(--blue-4);
+	}
+
+	.load-gif {
+		width: 40rem;
+		height: auto;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -252,6 +288,33 @@ body {
 		height: auto;
 	}
 
+	.page-description {
+		width: 30rem;
+		font-size: 1.25rem;
+	}
+
+	.input-box {
+		padding-right: 0.25rem;
+		padding-left: 0.25rem;
+		width: 29rem;
+		height: 2.07rem;
+		font-size: 1.25rem;
+		border-radius: 0.75rem;
+		border: 0.25rem solid #222222;
+	}
+
+	.ask-button {
+		width: 4.14rem; 
+		height: 2.48rem;  
+		border-radius: 0.75rem;
+		font-size: 1.25rem;
+		border: 0.25rem solid var(--blue-4);
+	}
+
+	.load-gif {
+		width: 34rem;
+		height: auto;
+	}
 }
 
 @media screen and (max-width: 480px) {
@@ -264,11 +327,77 @@ body {
 		height: auto;
 	}
 
+	.page-description {
+		width: 25rem;
+		font-size: 1rem;
+	}
+
+	.input-box {
+		padding-right: 0.2rem;
+		padding-left: 0.2rem;
+		width: 24rem;
+		height: 1.71rem;
+		font-size: 1rem;
+		border-radius: 0.6rem;
+		border: 0.2rem solid #222222;
+	}
+
+	.ask-button {
+		width: 3.43rem; 
+		height: 2.09rem;  
+		border-radius: 0.6rem;
+		font-size: 1rem;
+		border: 0.2rem solid var(--blue-4);
+	}
+
+	.load-gif {
+		width: 29rem;
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	body {
+		background-color: teal;
+	}
+
+	.bot-img {
+		width: 11.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 21rem;
+		font-size: 1rem;
+	}
+
+	.input-box {
+		padding-right: 0.2rem;
+		padding-left: 0.2rem;
+		width: 19rem;
+		height: 1.36rem;
+		font-size: 1rem;
+		border-radius: 0.5rem;
+		border: 0.2rem solid #222222;
+	}
+
+	.ask-button {
+		width: 2.71rem; 
+		height: 1.63rem;  
+		border-radius: 0.5rem;
+		font-size: 0.9rem;
+		border: 0.2rem solid var(--blue-4);
+	}
+
+	.load-gif {
+		width: 23rem;
+		height: auto;
+	}
 }
 
 @media screen and (max-width: 320px) {
 	body {
-		background-color: yellow;
+		background-color: orange;
 	}
 
 	.bot-img {
@@ -276,6 +405,33 @@ body {
 		height: auto;
 	}
 
+	.page-description {
+		width: 15rem;
+		font-size: 0.8rem;
+	}
+
+	.input-box {
+		padding-right: 0.16rem;
+		padding-left: 0.16rem;
+		width: 14rem;
+		height: 1rem;
+		font-size: 0.8rem;
+		border-radius: 0.45rem;
+		border: 0.16rem solid #222222;
+	}
+
+	.ask-button {
+		width: 2.75rem; 
+		height: 1.5rem;  
+		border-radius: 0.45rem;
+		font-size: 0.8rem;
+		border: 0.16rem solid var(--blue-4);
+	}
+
+	.load-gif {
+		width: 19rem;
+		height: auto;
+	}
 }
 
 @media screen and (max-width: 240px) {
@@ -286,6 +442,29 @@ body {
 	.bot-img {
 		width: 9.5rem;
 		height: auto;
+	}
+
+	.page-description {
+		width: 14rem;
+		font-size: 0.7rem;
+	}
+
+	.input-box {
+		padding-right: 0.14rem;
+		padding-left: 0.14rem;
+		width: 13rem;
+		height: 0.93rem;
+		font-size: 0.7rem;
+		border-radius: 0.4rem;
+		border: 0.14rem solid #222222;
+	}
+
+	.ask-button {
+		width: 2.75rem; 
+		height: 1.5rem;  
+		border-radius: 0.4rem;
+		font-size: 0.7rem;
+		border: 0.14rem solid var(--blue-4);
 	}
 }
 
