@@ -1,10 +1,10 @@
 [x] basic functionality: user enters or clicks -> process client side -> GET server if good -> server returns -> client side displays
-[] set up all elements to be responsive/resizeable - minimal as possible
-[] loading spinny graphic
-[] make nice little graphic/animation
-[] nice background, nice contrasting colors
-[] nice font
-[] succint message
-[] nice search bar
-[] nice search "ask me" button
-[] each element should be a nice little rounded div square thing (description .... ? - I think flexbox makes this cool)
+[x] set up all elements to be responsive/resizeable - minimal as possible
+[x] loading spinny graphic
+[x] make nice little graphic/animation
+[x] nice background, nice contrasting colors
+[x] nice font
+[x] succint message
+[x] nice search bar
+[x] nice search "ask me" button
+[x] each element should be a nice little rounded div square thing (description .... ? - I think flexbox makes this cool)
