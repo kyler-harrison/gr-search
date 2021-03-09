@@ -9,43 +9,72 @@ String.prototype.format = function() {
 }
 
 function getQuery(query) {
-	// TODO load spinny image
+	var gifElem = ".load-gif-container";
+	$(gifElem).show();
 	
-	// clear out any elems/messages for each new query
 	var messageContainer = ".main-message-container";
 	$(messageContainer).empty();
-	var baseElemId = "#base-results-container";  
-	$(baseElemId).empty();  
+
+	var resultsContainer = ".all-results-container";
+	$(resultsContainer).empty();
 
 	if (query.length == 0) {
-		var returnMsgElem = "<div class='return-message'>Well... I need a description to make recommendations... So... Describe something.</div>"
+		$(gifElem).hide();
+		var returnMsgElem = "<div class='main-message-container'><div class='main-message'>Well... I need a description to make recommendations... So... Describe something.</div></div>";
 		$(messageContainer).append(returnMsgElem);
 
 	} else {
 		$.ajax({
-			url: "http://localhost:3000",
+			url: "http://localhost:3000/",
 			type: "GET",
 			data: {search: query},
 			success: (result) => {
-				// TODO stop displaying load spinny image
+				$(gifElem).hide();
 
 				console.log(result);
 				var message = result.message;
 				var resStatus = result.resStatus;
+				var returnMsgElem = "<div class='main-message-container'><div class='main-message'>" + message + "</div></div>";
+				$(messageContainer).append(returnMsgElem);
 
-				// if no error has been returned: display data
 				if (resStatus == "valid") {
 					var dataArr = result.dataArr;
 					for (var dataObj of dataArr) {
-						var dataId = "title" + Math.floor(Math.random() * 100000);
-						var dataBaseElem = "<div id='{0}' class='result-container'>{1}<div class='subby'>urmom</div></div>".format(dataId, dataObj['unfiltered_title']);
-						// TODO now append the sub elems of the main data elem
+						console.log(dataObj);
 
-						$(baseElemId).append(dataBaseElem);
+						var authorsStr = "";
+						if (dataObj["authors"].length > 1) {
+							authorsStr = dataObj["authors"].join(", ");
+						} else {
+							authorsStr = dataObj["authors"][0];
+						}
+
+						var dataContainer = `
+						<div class="result-container">
+							<div class="data-left">
+								<div class="img-container">
+									<img src="{0}" class="cover-img"/>
+								</div>
+							</div>
+							<div class="data-right">
+								<div class="book-title">{1}</div>
+								<div class="middle-data">
+									<div class="book-author">{2}</div>
+									<div class="book-description">{3}</div>
+									<div class="fade-box"></div>
+								</div>
+								<div class="amz-container">
+									<button class="amz-button">
+										<a class="amz-link" href="{4}" target="_blank">View on Amazon</a>
+									</button>
+								</div>
+							</div>
+						</div>`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"], dataObj["amz_link"]);
+
+						$(resultsContainer).append(dataContainer);
 					}
-				} else {
-					console.log("we hit the else");
-					$(baseElemId).append("<div class='return-message'>" + message + "</div");
+
+					$(resultsContainer).append("<div class='contact'>Contact us email@domain.com</div>");
 				}
 			}
 		});
@@ -63,3 +92,4 @@ $(".ask-button").click(() => {
 	var input = $(".input-box").val();
 	getQuery(input);
 });
+
