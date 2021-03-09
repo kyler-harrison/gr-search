@@ -8,3 +8,6 @@
 [x] nice search bar
 [x] nice search "ask me" button
 [x] each element should be a nice little rounded div square thing (description .... ? - I think flexbox makes this cool)
+[x] finish js to render the proper elems and error messages
+[x] 404 error page
+[x] rate-limit page
