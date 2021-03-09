@@ -2,25 +2,34 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/stylesheets/index.css" />
-		<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script defer src="/js/index.js"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+		<link rel="stylesheet" href="/stylesheets/index.css"/>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet"/>
 	</head>
-	<div class="main-container">
-		<div class="img-container">
-			<img src="https://bookoraclecoverimages.s3.amazonaws.com/defaultNoImgAvailable.png" class="bot-img"/>
-		</div>
-		<div class="page-desciption">
-			Description here
-		</div>
-		<div class="search-container">
-			<input class="input-box" type="text" placeholder="Describe what you want to read..." name="search" autocomplete="off">
-			<div class="button-container">
+	<body>
+		<div class="main-container">
+			<div class="bot-container">
+				<img class="bot-img" src="/imgs/bookbot.png"/>
+			</div>
+			<div class="page-description-container">
+				<div class="page-description">Hi, I'm the BookBot, an artificial intelligence that has read about thousands of books. I'll recommend a few of my favorites if you ask.</div>
+			</div>
+			<div class="search-container">
+				<input class="input-box" type="text" placeholder="Describe what you'd like to read..." name="search" autocomplete="off">
+			</div>
+			<div class="ask-button-container">
 				<button class="ask-button">Ask</button>
 			</div>
+			<div class="load-gif-container">
+				<img class="load-gif" src="/imgs/thinking.gif">
+			</div>
+			<div class="main-message-container"></div>
+			<div class="all-results-container"></div>
 		</div>
-		<div class="main-message-container"></div>
-		<div id="base-results-container" class="all-results-container">Results container</div>
-	</div>
+		<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script defer src="/js/index.js"></script>
+	</body>
 </html>
