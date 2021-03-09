@@ -47,7 +47,7 @@ router.get("/", async (req, res) => {
 	// py server returned no valid words
 	if (filteredQueryArray.length == 0) {
 		returnData["resStatus"] = "no_valid"
-		returnData["message"] = "Hmmm... I don't recognize any of those words. Input a different description.";
+		returnData["message"] = "Hmmm... I don't recognize any of those words. Try a different description.";
 		res.send(returnData);
 		return;
 	}
@@ -102,7 +102,7 @@ router.get("/", async (req, res) => {
 	// no scores returned from db
 	if (finalWordResults.length == 0) {
 		returnData["resStatus"] = "no_results"
-		returnData["message"] = "Hmmm... I don't recognize any of those words. Input a different description.";
+		returnData["message"] = "Hmmm... I don't recognize any of those words. Try a different description.";
 		res.send(returnData);
 		return;
 	}
@@ -154,7 +154,7 @@ router.get("/", async (req, res) => {
 
 	// clean up and return data
 	returnData["resStatus"] = "valid";
-	returnData["message"] = "I recommend...";
+	returnData["message"] = "I think you might like...";
 	returnData["dataArr"] = finalResults;
 	//res.render("index.ejs", returnData);
 	res.send(returnData);
