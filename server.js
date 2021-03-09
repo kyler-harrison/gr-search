@@ -29,7 +29,7 @@ app.use("/", indexRouter);
 
 // 404 error on non-existing page
 app.use((req, res) => {
-	res.send("404 error dude");
+	res.render("error404.ejs");
 });
 
 // using a proxy like nginx, should probably read into this more
@@ -37,11 +37,15 @@ app.use((req, res) => {
 //app.set("trust proxy", "loopback")
 
 // limit user to 2 requests (all reqs to this server) per second at most (what should this be?)
+// TODO this isn't working, not sure why
 const limiter = rateLimit({
-	windowMs: 1000,
-	max: 2,
+	windowMs: 50000,
+	max: 1,
 	message: "hey you dumb fuck", 
-		handler: function(req, res) {res.send("no")}
+		handler: function(req, res) {
+			console.log("rate exceeded");
+			res.send("no");
+		}
 });
 app.use(limiter);
 
