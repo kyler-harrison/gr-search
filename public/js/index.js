@@ -29,7 +29,6 @@ function getQuery(query) {
 		success: (result) => {
 			$(gifElem).hide();
 
-			console.log(result);
 			var message = result.message;
 			var resStatus = result.resStatus;
 			var returnMsgElem = "<div class='main-message-container'><div class='main-message'>" + message + "</div></div>";
@@ -38,8 +37,6 @@ function getQuery(query) {
 			if (resStatus == "valid") {
 				var dataArr = result.dataArr;
 				for (var dataObj of dataArr) {
-					console.log(dataObj);
-
 					var authorsStr = "";
 					if (dataObj["authors"].length > 1) {
 						authorsStr = dataObj["authors"].join(", ");

@@ -38,8 +38,9 @@ app.use((req, res) => {
 
 // limit user to 2 requests (all reqs to this server) per second at most (what should this be?)
 // TODO this isn't working, not sure why
+/*
 const limiter = rateLimit({
-	windowMs: 50000,
+	windowMs: 5000,
 	max: 1,
 	message: "hey you dumb fuck", 
 		handler: function(req, res) {
@@ -48,6 +49,19 @@ const limiter = rateLimit({
 		}
 });
 app.use(limiter);
+*/
+const limiter = rateLimit({
+	windowMs: 5000,
+	max: 1,
+	message: "not",
+	handler: (req, res) => {
+		console.log("exceeded");
+		res.send("not");
+	}
+});
+app.use(limiter);
+app.set("trust proxy", 1);
 
 // listen on port listed in .env
 app.listen(process.env.NODE_PORT)
+
