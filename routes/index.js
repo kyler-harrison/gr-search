@@ -12,11 +12,14 @@ const maxResultsReturn = 20;  // number of titles to return
 const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
 const redisExpiration = 3600;  // seconds, == 1 hour
 
-// TODO add in general error function, will just return a "Something went wrong, please try again" msg
-// log caught errors somewhere?
+// handle caught errors, assuming output appends to a log file 
+function caughtError(err, res) {
+	console.log(err);
+	res.send({resStatus: null, message: "Something went wrong, please try again.", dataArr: null});
+	return;
+}
 
-
-// TODO error handling everywhere
+// main (and only) request route
 router.get("/", async (req, res) => {
 	var query = req.query.search;  // user query (passed as param search, referenced as query throughout rest of this fun)
 	var returnData = {resStatus: null, message: null, dataArr: null};  // return json var, at least return inputted query
@@ -28,8 +31,14 @@ router.get("/", async (req, res) => {
 
 	// random results requested
 	if (query == "$random$") {
+		
 		// get random data
-		var randoResults = await database.get().collection(metaCollection).aggregate([{$sample: {size: maxResultsReturn}}]).toArray();
+		try {
+			var randoResults = await database.get().collection(metaCollection).aggregate([{$sample: {size: maxResultsReturn}}]).toArray();
+		} catch (err) {
+			caughtError(err, res);
+			return;
+		}
 		
 		// get what to send back
 		var finalResults = [];
@@ -47,7 +56,14 @@ router.get("/", async (req, res) => {
 	
 	// python server for text processing
 	var pyPortPath = "http://localhost:" + process.env.PY_PORT;
-	var pyRes = await axios.post(pyPortPath, {"unfilteredQuery": query});
+
+	try {
+		var pyRes = await axios.post(pyPortPath, {"unfilteredQuery": query});
+	} catch (err) {
+		caughtError(err, res);
+		return;
+	}
+
 	var pyResObj = pyRes.data;
 	var returnMessage = pyResObj.message;
 
@@ -72,8 +88,14 @@ router.get("/", async (req, res) => {
 	
 	// query redis cache and add pending Promises to array
 	var redisPromises = [];
-	for (var word of filteredQueryArray) {
-		redisPromises.push(asyncRedisClient.get(word));
+
+	try {
+		for (var word of filteredQueryArray) {
+			redisPromises.push(asyncRedisClient.get(word));
+		}
+	} catch (err) {
+		caughtError(err, res);
+		return;
 	}
 
 	// wait for cached Promises
@@ -93,28 +115,37 @@ router.get("/", async (req, res) => {
 			finalWordResults.push(JSON.parse(redisResults[i]));
 		}
 	}
-	// redis rm: now initialize finalWordResults and change wordsToQuery to filteredQueryArray in the loop below, rm cache later
 
   // access db client by doing database.get().mongoFunctionYouWant()
-	//var finalWordResults = [];
 	var queryPromises = [];
-	for (var word of wordsToQuery) {
-		// pushes pending db Promise into array, allows multiple queries to run in parallel (I think)
-		queryPromises.push(database.get().collection(wordCollection).findOne({word_key: word}));
+
+	try {
+		for (var word of wordsToQuery) {
+			// pushes pending db Promise into array, allows multiple queries to run in parallel (I think)
+			queryPromises.push(database.get().collection(wordCollection).findOne({word_key: word}));
+		}
+	} catch (err) {
+		caughtError(err, res);
+		return;
 	}
 
 	// for each Promise in the array, await its result
 	var queryResults = await Promise.all(queryPromises);
 	
 	// iterate through queries and add results to final word array and cache
-	for (var queryObj of queryResults) {
-		// put object of {title: score} in the array
-		if (queryObj != null) {
-			finalWordResults.push(queryObj["title_vals"]);
+	try {
+		for (var queryObj of queryResults) {
+			// put object of {title: score} in the array
+			if (queryObj != null) {
+				finalWordResults.push(queryObj["title_vals"]);
 
-			// add this word and its data to redis cache
-			asyncRedisClient.setex(queryObj["word_key"], redisExpiration, JSON.stringify(queryObj["title_vals"]));
+				// add this word and its data to redis cache
+				asyncRedisClient.setex(queryObj["word_key"], redisExpiration, JSON.stringify(queryObj["title_vals"]));
+			}
 		}
+	} catch (err) {
+		caughtError(err, res);
+		return;
 	}
 	
 	// no scores returned from db
@@ -156,9 +187,14 @@ router.get("/", async (req, res) => {
 
 	// query db, should push each Promise into array and resolve in same ranked order
 	var metaQueryPromises = [];  // array of metadata db query Promises
-	for (var titleTuple of ratioScores) {
-		// search by title (the first entry in the "tuple" which is just a sub array)
-		metaQueryPromises.push(database.get().collection(metaCollection).findOne({title_key: titleTuple[0]}));
+	try {
+		for (var titleTuple of ratioScores) {
+			// search by title (the first entry in the "tuple" which is just a sub array)
+			metaQueryPromises.push(database.get().collection(metaCollection).findOne({title_key: titleTuple[0]}));
+		}
+	} catch (err) {
+		caughtError(err, res);
+		return;
 	}
 
 	// resolve mongo meta query results
