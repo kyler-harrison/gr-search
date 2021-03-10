@@ -21,6 +21,21 @@ app.use(session({
 // connect to mongodb, should be good to use .get() method in other routers
 database.connect();
 
+// using a proxy like nginx, should probably read into this more
+//app.set("trust proxy", true);
+//app.set("trust proxy", "loopback")
+// limit user to 2 requests (all reqs to this server) per second at most 
+// NOTE it matters that this is here before routers in script
+const limiter = rateLimit({
+	windowMs: 1000,
+	max: 2,
+	handler: (req, res) => {
+		console.log("exceeded");
+		res.render("rate.ejs");
+	}
+});
+app.use(limiter);
+
 // routers
 const indexRouter = require("./routes/index");
 
@@ -31,36 +46,6 @@ app.use("/", indexRouter);
 app.use((req, res) => {
 	res.render("error404.ejs");
 });
-
-// using a proxy like nginx, should probably read into this more
-//app.set("trust proxy", true);
-//app.set("trust proxy", "loopback")
-
-// limit user to 2 requests (all reqs to this server) per second at most (what should this be?)
-// TODO this isn't working, not sure why
-/*
-const limiter = rateLimit({
-	windowMs: 5000,
-	max: 1,
-	message: "hey you dumb fuck", 
-		handler: function(req, res) {
-			console.log("rate exceeded");
-			res.send("no");
-		}
-});
-app.use(limiter);
-*/
-const limiter = rateLimit({
-	windowMs: 5000,
-	max: 1,
-	message: "not",
-	handler: (req, res) => {
-		console.log("exceeded");
-		res.send("not");
-	}
-});
-app.use(limiter);
-app.set("trust proxy", 1);
 
 // listen on port listed in .env
 app.listen(process.env.NODE_PORT)
