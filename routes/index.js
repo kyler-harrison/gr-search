@@ -12,20 +12,38 @@ const maxResultsReturn = 20;  // number of titles to return
 const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
 const redisExpiration = 3600;  // seconds, == 1 hour
 
+// TODO add in general error function, will just return a "Something went wrong, please try again" msg
+// log caught errors somewhere?
+
+
 // TODO error handling everywhere
 router.get("/", async (req, res) => {
-	// TODO rando db query (might do on err cases - haven't tested):
-	// db.collectionName.aggregate([{ $sample: { size: 1 } }])
-
 	var query = req.query.search;  // user query (passed as param search, referenced as query throughout rest of this fun)
-	var returnData;  // init return json var
+	var returnData = {resStatus: null, message: null, dataArr: null};  // return json var, at least return inputted query
 
 	if (query == null) {
 		res.render("index.ejs");
 		return;
 	} 
 
-	returnData = {resStatus: null, message: null, dataArr: null};  // at least return inputted query
+	// random results requested
+	if (query == "$random$") {
+		// get random data
+		var randoResults = await database.get().collection(metaCollection).aggregate([{$sample: {size: maxResultsReturn}}]).toArray();
+		
+		// get what to send back
+		var finalResults = [];
+		for (var randoResult of randoResults) {
+			finalResults.push(randoResult.title_data);
+		}
+
+		// clean up and return data
+		returnData["resStatus"] = "valid";
+		returnData["message"] = "Random it is!";
+		returnData["dataArr"] = finalResults;
+		res.send(returnData);
+		return;
+	}
 	
 	// python server for text processing
 	var pyPortPath = "http://localhost:" + process.env.PY_PORT;
@@ -156,7 +174,6 @@ router.get("/", async (req, res) => {
 	returnData["resStatus"] = "valid";
 	returnData["message"] = "I think you might like...";
 	returnData["dataArr"] = finalResults;
-	//res.render("index.ejs", returnData);
 	res.send(returnData);
 	return;
 });
