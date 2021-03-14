@@ -7,6 +7,7 @@ from aiohttp import web
 from dotenv import load_dotenv
 from pathlib import Path
 
+
 # load in port number
 dotenv_path = Path("./.env")
 load_dotenv(dotenv_path=dotenv_path)
