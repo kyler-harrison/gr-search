@@ -268,17 +268,17 @@ body {
 		padding-right: 0.25rem;
 		padding-left: 0.25rem;
 		width: 35rem;
-		height: 2.5rem;
+		height: 3.5rem;
 		font-size: 1.25rem;
 		border-radius: 0.75rem;
 		border: 0.25rem solid var(--black-0);
 	}
 
 	.ask-button {
-		width: 5rem; 
+		width: 6rem; 
 		height: 3rem;
 		border-radius: 0.75rem;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		border: 0.25rem solid var(--blue-0);
 	}
 
@@ -344,7 +344,7 @@ body {
 		padding-right: 0.25rem;
 		padding-left: 0.25rem;
 		width: 29rem;
-		height: 2.07rem;
+		height: 3.07rem;
 		font-size: 1.25rem;
 		border-radius: 0.75rem;
 		border: 0.25rem solid var(--black-0);
@@ -356,10 +356,10 @@ body {
 	}
 
 	.ask-button {
-		width: 4.14rem; 
+		width: 5.14rem; 
 		height: 2.48rem;  
 		border-radius: 0.75rem;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		border: 0.25rem solid var(--blue-0);
 	}
 
@@ -420,7 +420,7 @@ body {
 		padding-right: 0.2rem;
 		padding-left: 0.2rem;
 		width: 24rem;
-		height: 1.71rem;
+		height: 2.71rem;
 		font-size: 1rem;
 		border-radius: 0.6rem;
 		border: 0.2rem solid var(--black-0);
@@ -432,10 +432,10 @@ body {
 	}
 
 	.ask-button {
-		width: 3.43rem; 
+		width: 4.43rem; 
 		height: 2.09rem;  
 		border-radius: 0.6rem;
-		font-size: 1rem;
+		font-size: 0.9rem;
 		border: 0.2rem solid var(--blue-0);
 	}
 
@@ -496,7 +496,7 @@ body {
 		padding-right: 0.2rem;
 		padding-left: 0.2rem;
 		width: 19rem;
-		height: 1.36rem;
+		height: 2.36rem;
 		font-size: 1rem;
 		border-radius: 0.5rem;
 		border: 0.2rem solid var(--black-0);
@@ -508,10 +508,10 @@ body {
 	}
 
 	.ask-button {
-		width: 2.71rem; 
+		width: 3.71rem; 
 		height: 1.63rem;  
 		border-radius: 0.5rem;
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		border: 0.2rem solid var(--blue-0);
 	}
 
@@ -573,7 +573,7 @@ body {
 		padding-right: 0.16rem;
 		padding-left: 0.16rem;
 		width: 14rem;
-		height: 1rem;
+		height: 2rem;
 		font-size: 0.8rem;
 		border-radius: 0.45rem;
 		border: 0.16rem solid var(--black-0);
@@ -585,10 +585,10 @@ body {
 	}
 
 	.ask-button {
-		width: 2.75rem; 
+		width: 3.75rem; 
 		height: 1.5rem;  
 		border-radius: 0.45rem;
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 		border: 0.16rem solid var(--blue-0);
 	}
 
@@ -651,7 +651,7 @@ body {
 		padding-right: 0.16rem;
 		padding-left: 0.16rem;
 		width: 14rem;
-		height: 1rem;
+		height: 2rem;
 		font-size: 0.8rem;
 		border-radius: 0.45rem;
 		border: 0.16rem solid var(--black-0);
@@ -663,10 +663,10 @@ body {
 	}
 
 	.ask-button {
-		width: 2.75rem; 
+		width: 3.75rem; 
 		height: 1.5rem;  
 		border-radius: 0.45rem;
-		font-size: 0.8rem;
+		font-size: 0.65rem;
 		border: 0.16rem solid var(--blue-0);
 	}
 
@@ -733,7 +733,7 @@ body {
 		padding-right: 0.14rem;
 		padding-left: 0.14rem;
 		width: 13rem;
-		height: 0.93rem;
+		height: 1.93rem;
 		font-size: 0.7rem;
 		border-radius: 0.4rem;
 		border: 0.14rem solid var(--black-0);
@@ -746,9 +746,9 @@ body {
 
 	.ask-button {
 		width: 2.75rem; 
-		height: 1.5rem;  
+		height: 2.5rem;  
 		border-radius: 0.4rem;
-		font-size: 0.7rem;
+		font-size: 0.65rem;
 		border: 0.14rem solid var(--blue-0);
 	}
 
