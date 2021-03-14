@@ -4,6 +4,8 @@ import json
 import enchant
 import re
 import traceback
+import datetime
+import pytz
 from aiohttp import web
 from dotenv import load_dotenv
 from pathlib import Path
@@ -80,6 +82,9 @@ async def filter_query(request):
         return web.Response(text=return_obj)
     except:
         return_obj = json.dumps({"filteredQueryArray": [], "message": "invalid"})
+        east_tz = pytz.timezone("US/Eastern")
+        formatted_time = datetime.datetime.now(tz=east_tz).strftime("%m/%d/%Y, %I:%M:%S %p %Z")
+        print(formatted_time)
         print(traceback.format_exc())
         print("\n")
         return web.Response(text=return_obj)
