@@ -69,7 +69,7 @@ function getQuery(query) {
 					$(resultsContainer).append(dataContainer);
 				}
 
-				$(resultsContainer).append("<div class='contact'>Contact us email@domain.com</div>");
+				$(resultsContainer).append("<div class='contact'>Contact us bookbotapp@gmail.com</div>");
 			}
 		}
 	});
