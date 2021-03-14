@@ -3,6 +3,7 @@ import nltk
 import json
 import enchant
 import re
+import traceback
 from aiohttp import web
 from dotenv import load_dotenv
 from pathlib import Path
@@ -69,13 +70,19 @@ def word_filter(text):
 
 # main function 
 async def filter_query(request):
-    data = await request.json()
-    query = data["unfilteredQuery"]
-    print(f"received query: {query}")
-    return_ls, return_msg = word_filter(query)
-    return_obj = json.dumps({"filteredQueryArray": return_ls, "message": return_msg})
-    print("returning: {}".format(return_obj))
-    return web.Response(text=return_obj)
+    try:
+        data = await request.json()
+        query = data["unfilteredQuery"]
+        print(f"received query: {query}")
+        return_ls, return_msg = word_filter(query)
+        return_obj = json.dumps({"filteredQueryArray": return_ls, "message": return_msg})
+        print("returning: {}".format(return_obj))
+        return web.Response(text=return_obj)
+    except:
+        return_obj = json.dumps({"filteredQueryArray": [], "message": "invalid"})
+        print(traceback.format_exc())
+        print("\n")
+        return web.Response(text=return_obj)
 
 
 # set up post route
