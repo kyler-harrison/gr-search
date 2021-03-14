@@ -17,7 +17,7 @@ const redisExpiration = 3600;  // seconds, == 1 hour
 // handle caught errors, assuming output appends to a log file 
 function caughtError(err, res) {
 	var d = new Date();
-	var formattedDate = d.toLocaleString("en-us", {time-zone: "America/New_York"}) + " Eastern";
+	var formattedDate = d.toLocaleString("en-us", {timeZone: "America/New_York"}) + " Eastern";
 	console.log(formattedDate);
 	console.log(err);
 	console.log("\n");
