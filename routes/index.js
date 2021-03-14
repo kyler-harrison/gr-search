@@ -10,11 +10,17 @@ const maxResultsReturn = 20;  // number of titles to return
 
 // connect async redis client
 const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
+// if using authentication, use password in redis system config file
+// asyncRedisClient.auth(process.env.REDIS_PASSWORD_VAR_NAME);
 const redisExpiration = 3600;  // seconds, == 1 hour
 
 // handle caught errors, assuming output appends to a log file 
 function caughtError(err, res) {
+	var d = new Date();
+	var formattedDate = d.toLocaleString("en-us", {time-zone: "America/New_York"}) + " Eastern";
+	console.log(formattedDate);
 	console.log(err);
+	console.log("\n");
 	res.send({resStatus: null, message: "Something went wrong, please try again.", dataArr: null});
 	return;
 }
@@ -73,6 +79,12 @@ router.get("/", async (req, res) => {
 		returnData["message"] = "That description is too long for me to understand. Try again with something shorter.";
 		res.send(returnData);
 		return;
+	}
+
+	// if python server encountered some sort of error
+	if (returnMessage == "invalid") {
+		caughtError("py server error, see that log", res);
+		return
 	}
 
 	// NOTE duplicates are handled by py server 
