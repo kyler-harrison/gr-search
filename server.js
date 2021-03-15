@@ -18,6 +18,15 @@ app.use(session({
 	saveUninitialized: false,
 }));
 
+// set response headers (needed to get around CORS policy when sending data)
+app.use((req, res, next) => {
+	res.setHeader("Access-Control-Allow-Origin", "https://bookbot.org");
+	res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+	res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
+	res.setHeader("Access-Control-Allow-Credentials", true);
+	next();
+});
+
 // connect to mongodb, should be good to use .get() method in other routers
 database.connect();
 
@@ -36,6 +45,7 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+
 // routers
 const indexRouter = require("./routes/index");
 
@@ -48,5 +58,5 @@ app.use((req, res) => {
 });
 
 // listen on port listed in .env
-app.listen(process.env.NODE_PORT)
+app.listen(process.env.NODE_PORT);
 
