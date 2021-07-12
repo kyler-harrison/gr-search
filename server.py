@@ -10,6 +10,7 @@ from aiohttp import web
 from dotenv import load_dotenv
 from pathlib import Path
 
+
 # load in port number
 dotenv_path = Path("./.env")
 load_dotenv(dotenv_path=dotenv_path)
@@ -74,10 +75,8 @@ async def filter_query(request):
     try:
         data = await request.json()
         query = data["unfilteredQuery"]
-        print(f"received query: {query}")
         return_ls, return_msg = word_filter(query)
         return_obj = json.dumps({"filteredQueryArray": return_ls, "message": return_msg})
-        print("returning: {}".format(return_obj))
         return web.Response(text=return_obj)
     except:
         return_obj = json.dumps({"filteredQueryArray": [], "message": "invalid"})
