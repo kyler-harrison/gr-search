@@ -1,0 +1,797 @@
+:root {
+	--white-0: #f2f2f2;
+	--white-1: #d9d9d9;
+	--black-0: #0d0d0d;
+	--blue-0: #00a8f3;
+	--blue-1: #009de6;
+	font-family: "Monterserrat", sans-serif;
+}
+
+html {
+	height: 100% !important;
+	font-size: 100%;
+}
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+	background-color: var(--black-0);
+}
+
+.contact {
+	font-size: 1rem;
+	color: var(--white-0);
+	margin-top: 3%;
+	margin-bottom: 2%;
+}
+
+.main-container, .search-container, .main-message-container, .all-results-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	flex-direction: column;
+}
+
+.bot-container {
+	margin-top: 5%;
+}
+
+.bot-img {
+	width: 15rem;
+	height: auto;
+}
+
+.page-description-container {
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.page-description {
+	text-align: center;
+	width: 35rem;
+	color: var(--white-0);
+	font-size: 1.25rem;
+}
+
+.redirect-link {
+	text-decoration: underline;
+	color: var(--blue-0);
+}
+
+.search-container {
+	margin-bottom: 2%;
+}
+
+.input-box {
+	padding-right: 0.25rem;
+	padding-left: 0.25rem;
+	width: 35rem;
+	height: 2.5rem;
+	font-size: 1.25rem;
+	border-radius: 0.75rem;
+	border: 0.25rem solid var(--black-0);
+	outline: none;
+	background-color: var(--white-0);
+}
+
+.input-box:focus {
+	border: 0.25rem solid var(--blue-0);
+}
+
+.ask-button-container {
+	margin-bottom: 2%;
+}
+
+.ask-button {
+	width: 5rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	outline: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: var(--black-0);
+	border: 0.25rem solid var(--blue-0);
+	background-color: var(--blue-0);
+	cursor: pointer;
+}
+
+.ask-button:hover {
+	border: 0.25rem solid var(--blue-1);
+	background-color: var(--blue-1);
+}
+
+.main-message-container {
+	margin-bottom: 1%;
+}
+
+.main-message {
+	text-align: center;
+	width: 35rem;
+	color: var(--white-0);
+	font-size: 1.25rem;
+}
+
+.all-results-container {
+	margin-bottom: 1%;
+}
+
+.load-gif-container {
+	display: none;
+	margin-bottom: 2%;
+}
+
+.load-gif {
+	width: 35rem;
+	height: auto;
+}
+
+.result-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	flex-direction: row;
+	width: 45rem;
+	height: 22.5rem;
+	background-color: var(--white-0);
+	margin-top: 3%;
+	border-radius: 0.75rem;
+}
+
+.data-left {
+	height: 96%;
+	width: 31%;
+	margin-right: 1%;
+}
+
+.data-right {
+	height: 96%;
+	width: 66%;
+	margin-right: 1%;
+}
+
+.img-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 95%;
+	overflow: hidden;
+	margin-top: 2%;
+}
+
+.cover-img {
+	height: auto;
+	width: 85%;
+}
+
+.book-title, .book-author, .book-description, .amz-container {
+	padding: 1% 1.2% 1% 1.2%;
+	overflow: hidden;
+}
+
+.book-title, .book-author {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.book-title {
+	margin-top: 1%;
+	height: 10%;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--dark-0);
+	border-bottom: 0.1rem solid var(--white-1);
+}
+
+.middle-data {
+	height: 65%;
+	position: relative;
+}
+
+.book-author {
+	height: 10%;
+	margin-top: 1%;
+	font-size: 1.25rem;
+	color: var(--black-0);
+}
+
+.book-description {
+	margin-top: 1%;
+	font-size: 1rem;
+	height: 78%; 
+	word-wrap: break-word; 
+	position: absolute;
+	width: 98%;
+}
+
+.fade-box {
+	position: absolute;
+	height: 20%;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	margin: 0;
+	background-image: linear-gradient(to bottom, transparent, var(--white-0));
+}
+
+.amz-container {
+	border-top: 0.1rem solid var(--white-1);
+	margin-top: 2%;
+	padding-top: 1%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 15%;
+}
+
+.amz-button {
+	border-radius: 0.15rem;
+	border: 0.25rem solid var(--blue-0);
+	outline: none;
+	cursor: pointer;
+	height: 100%;
+	width: 35%;
+	overflow: hidden;
+	background-color: var(--blue-0);
+}
+
+.amz-button:hover {
+	background-color: var(--blue-1);
+	border: 0.25rem solid var(--blue-1);
+}
+
+.amz-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+	height: 100%;
+	width: 100%;
+	text-decoration: none;
+	color: var(--white-0);
+}
+
+@media screen and (max-width: 768px) {
+	.bot-img {
+		width: 12.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 35rem;
+		font-size: 1.25rem;
+	}
+
+	.input-box {
+		padding-right: 0.25rem;
+		padding-left: 0.25rem;
+		width: 35rem;
+		height: 3.5rem;
+		font-size: 1.25rem;
+		border-radius: 0.75rem;
+		border: 0.25rem solid var(--black-0);
+	}
+
+	.ask-button {
+		width: 6rem; 
+		height: 3rem;
+		border-radius: 0.75rem;
+		font-size: 1rem;
+		border: 0.25rem solid var(--blue-0);
+	}
+
+	.main-message {
+		width: 35rem;
+		font-size: 1.25rem;
+	}
+
+	.load-gif {
+		width: 35rem;
+		height: auto;
+	}
+
+	.result-container {
+		height: 17.5rem;
+		width: 35rem;
+		border-radius: 0.75rem;
+	}
+
+	.book-title {
+		font-size: 1.25rem;
+		border-bottom: 0.1rem solid var(--white-1);
+	}
+	
+	.book-author {
+		font-size: 1rem;
+	}
+
+	.book-description {
+		font-size: 1rem;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.25rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.25rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 1rem;
+	}
+
+	.contact {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.bot-img {
+		width: 12rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 30rem;
+		font-size: 1.25rem;
+	}
+
+	.input-box {
+		padding-right: 0.25rem;
+		padding-left: 0.25rem;
+		width: 29rem;
+		height: 3.07rem;
+		font-size: 1.25rem;
+		border-radius: 0.75rem;
+		border: 0.25rem solid var(--black-0);
+	}
+
+	.main-message {
+		width: 30rem;
+		font-size: 1.25rem;
+	}
+
+	.ask-button {
+		width: 5.14rem; 
+		height: 2.48rem;  
+		border-radius: 0.75rem;
+		font-size: 1rem;
+		border: 0.25rem solid var(--blue-0);
+	}
+
+	.load-gif {
+		width: 29rem;
+		height: auto;
+	}
+
+	.result-container {
+		height: 15.75rem;
+		width: 29.5rem;
+		border-radius: 0.75rem;
+	}
+
+	.book-title {
+		font-size: 1rem;
+		border-bottom: 0.1rem solid var(--white-1);
+	}
+
+	.book-author {
+		font-size: 0.9rem;
+	}
+
+	.book-description {
+		font-size: 0.9rem;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.025rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.025rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 0.9rem;
+	}
+
+	.contact {
+		font-size: 0.9rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.bot-img {
+		width: 11.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 25rem;
+		font-size: 1rem;
+	}
+
+	.input-box {
+		padding-right: 0.2rem;
+		padding-left: 0.2rem;
+		width: 24rem;
+		height: 2.71rem;
+		font-size: 1rem;
+		border-radius: 0.6rem;
+		border: 0.2rem solid var(--black-0);
+	}
+	
+	.main-message {
+		width: 25rem;
+		font-size: 1rem;
+	}
+
+	.ask-button {
+		width: 4.43rem; 
+		height: 2.09rem;  
+		border-radius: 0.6rem;
+		font-size: 0.9rem;
+		border: 0.2rem solid var(--blue-0);
+	}
+
+	.load-gif {
+		width: 24rem;
+		height: auto;
+	}
+
+	.result-container {
+		height: 13.5rem;
+		width: 25rem;
+		border-radius: 0.6rem;
+	}
+
+	.book-title {
+		font-size: 1rem;
+		border-bottom: 0.1rem solid var(--white-1);
+	}
+
+	.book-author {
+		font-size: 0.8rem;
+	}
+
+	.book-description {
+		font-size: 0.8rem;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.025rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.025rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 0.8rem;
+	}
+
+	.contact {
+		font-size: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	.bot-img {
+		width: 11.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 21rem;
+		font-size: 1rem;
+	}
+
+	.input-box {
+		padding-right: 0.2rem;
+		padding-left: 0.2rem;
+		width: 19rem;
+		height: 2.36rem;
+		font-size: 1rem;
+		border-radius: 0.5rem;
+		border: 0.2rem solid var(--black-0);
+	}
+
+	.main-message {
+		width: 21rem;
+		font-size: 1rem;
+	}
+
+	.ask-button {
+		width: 3.71rem; 
+		height: 1.63rem;  
+		border-radius: 0.5rem;
+		font-size: 0.8rem;
+		border: 0.2rem solid var(--blue-0);
+	}
+
+	.load-gif {
+		width: 19rem;
+		height: auto;
+	}
+
+	.result-container {
+		height: 11.75rem;
+		width: 19.75rem;
+		border-radius: 0.5rem;
+	}
+
+	.book-title {
+		font-size: 0.9rem;
+		border-bottom: 0.1rem solid var(--white-1);
+	}
+
+	.book-author {
+		font-size: 0.75rem;
+		height: 12%;
+	}
+
+	.book-description {
+		font-size: 0.75rem;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.025rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.025rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 0.7rem;
+	}
+
+	.contact {
+		font-size: 0.75rem;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.bot-img {
+		width: 10.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 15rem;
+		font-size: 0.8rem;
+	}
+
+	.input-box {
+		padding-right: 0.16rem;
+		padding-left: 0.16rem;
+		width: 14rem;
+		height: 2rem;
+		font-size: 0.8rem;
+		border-radius: 0.45rem;
+		border: 0.16rem solid var(--black-0);
+	}
+
+	.main-message {
+		width: 15rem;
+		font-size: 0.8rem;
+	}
+
+	.ask-button {
+		width: 3.75rem; 
+		height: 1.5rem;  
+		border-radius: 0.45rem;
+		font-size: 0.7rem;
+		border: 0.16rem solid var(--blue-0);
+	}
+
+	.load-gif {
+		width: 14rem;
+		height: auto;
+	}
+	
+	.result-container {
+		height: 12rem;
+		width: 18rem;
+		border-radius: 0.45rem;
+	}
+
+	.book-title {
+		font-size: 0.8rem;
+		border-bottom: 0.1rem solid var(--white-1);
+		height: 12.5%;
+	}
+
+	.book-author {
+		font-size: 0.65rem;
+		height: 15%;
+	}
+
+	.book-description {
+		font-size: 0.65rem;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.025rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.025rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 0.65rem;
+	}
+
+	.contact {
+		font-size: 0.65rem;
+	}
+}
+
+@media screen and (max-width: 290px) {
+	.bot-img {
+		width: 10.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 15rem;
+		font-size: 0.8rem;
+	}
+
+	.input-box {
+		padding-right: 0.16rem;
+		padding-left: 0.16rem;
+		width: 14rem;
+		height: 2rem;
+		font-size: 0.8rem;
+		border-radius: 0.45rem;
+		border: 0.16rem solid var(--black-0);
+	}
+
+	.main-message {
+		width: 15rem;
+		font-size: 0.8rem;
+	}
+
+	.ask-button {
+		width: 3.75rem; 
+		height: 1.5rem;  
+		border-radius: 0.45rem;
+		font-size: 0.65rem;
+		border: 0.16rem solid var(--blue-0);
+	}
+
+	.load-gif {
+		width: 14rem;
+		height: auto;
+	}
+	
+	.result-container {
+		height: 9.5rem;
+		width: 16rem;
+		border-radius: 0.45rem;
+	}
+
+	.book-title {
+		font-size: 0.7rem;
+		border-bottom: 0.1rem solid var(--white-1);
+		height: 12.5%;
+	}
+
+	.book-author {
+		font-size: 0.5rem;
+		height: 12%;
+	}
+
+	.book-description {
+		font-size: 0.5rem;
+	}
+	
+	.amz-container {
+		height: 14%;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.01rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.01rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 0.5rem;
+	}
+
+	.contact {
+		font-size: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 240px) {
+	.bot-img {
+		width: 9.5rem;
+		height: auto;
+	}
+
+	.page-description {
+		width: 14rem;
+		font-size: 0.7rem;
+	}
+
+	.input-box {
+		padding-right: 0.14rem;
+		padding-left: 0.14rem;
+		width: 13rem;
+		height: 1.93rem;
+		font-size: 0.7rem;
+		border-radius: 0.4rem;
+		border: 0.14rem solid var(--black-0);
+	}
+
+	.main-message {
+		width: 14rem;
+		font-size: 0.7rem;
+	}
+
+	.ask-button {
+		width: 2.75rem; 
+		height: 2.5rem;  
+		border-radius: 0.4rem;
+		font-size: 0.65rem;
+		border: 0.14rem solid var(--blue-0);
+	}
+
+	.load-gif {
+		width: 13rem;
+		height: auto;
+	}
+
+	.result-container {
+		height: 9.75rem;
+		width: 14rem;
+		border-radius: 0.4rem;
+	}
+
+	.book-title {
+		font-size: 0.7rem;
+		border-bottom: 0.1rem solid var(--white-1);
+	}
+
+	.book-author {
+		font-size: 0.5rem;
+	}
+
+	.book-description {
+		font-size: 0.5rem;
+	}
+
+	.amz-button {
+		border-radius: 0.15rem;
+		border: 0.01rem solid var(--blue-0);
+	}
+
+	.amz-button:hover {
+		border: 0.01rem solid var(--blue-1);
+	}
+
+	.amz-link {
+		font-size: 0.5rem;
+	}
+
+	.contact {
+		font-size: 0.5rem;
+	}
+}
+
+
