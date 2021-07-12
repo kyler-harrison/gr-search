@@ -23,7 +23,7 @@ function getQuery(query) {
 	} 
 
 	$.ajax({
-		url: "http://localhost:3000/",
+		url: "https://www.bookbot.org/",
 		type: "GET",
 		data: {search: query},
 		success: (result) => {
@@ -57,11 +57,6 @@ function getQuery(query) {
 								<div class="book-author">{2}</div>
 								<div class="book-description">{3}</div>
 								<div class="fade-box"></div>
-							</div>
-							<div class="amz-container">
-								<button class="amz-button">
-									<a class="amz-link" href="{4}" target="_blank">View on Amazon</a>
-								</button>
 							</div>
 						</div>
 					</div>`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"], dataObj["amz_link"]);

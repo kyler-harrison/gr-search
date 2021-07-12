@@ -75,10 +75,8 @@ async def filter_query(request):
     try:
         data = await request.json()
         query = data["unfilteredQuery"]
-        print(f"received query: {query}")
         return_ls, return_msg = word_filter(query)
         return_obj = json.dumps({"filteredQueryArray": return_ls, "message": return_msg})
-        print("returning: {}".format(return_obj))
         return web.Response(text=return_obj)
     except:
         return_obj = json.dumps({"filteredQueryArray": [], "message": "invalid"})

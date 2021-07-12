@@ -11,8 +11,8 @@ const maxResultsReturn = 20;  // number of titles to return
 // connect async redis client
 const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
 // if using authentication, use password in redis system config file
-// asyncRedisClient.auth(process.env.REDIS_PASSWORD_VAR_NAME);
-const redisExpiration = 3600;  // seconds, == 1 hour
+asyncRedisClient.auth(process.env.REDIS_AUTH);
+const redisExpiration = 3600;  // seconds, = 1 hour
 
 // handle caught errors, assuming output appends to a log file 
 function caughtError(err, res) {
