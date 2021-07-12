@@ -25,6 +25,7 @@ h1 {
 
 p {
 	color: var(--white-1);
+	padding: 1%;
 }
 
 .main-container {
