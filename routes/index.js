@@ -10,7 +10,6 @@ const maxResultsReturn = 20;  // number of titles to return
 
 // connect async redis client
 const asyncRedisClient = asyncRedis.createClient(process.env.REDIS_PORT);
-// if using authentication, use password in redis system config file
 asyncRedisClient.auth(process.env.REDIS_AUTH);
 const redisExpiration = 3600;  // seconds, = 1 hour
 
@@ -128,7 +127,7 @@ router.get("/", async (req, res) => {
 		}
 	}
 
-  // access db client by doing database.get().mongoFunctionYouWant()
+  	// access db client by doing database.get().mongoFunctionYouWant()
 	var queryPromises = [];
 
 	try {
