@@ -2,14 +2,17 @@
 	--white-0: #ffffff;
 	--white-1: #e6e6e6;
 	--black-0: #0d0d0d;
-	--blue-1: #00a8f3;
+	--blue-0: #00a8f3;
 	--blue-1: #009de6;
-	font-family: "Monterserrat", sans-serif;
 }
 
 html {
 	height: 100% !important;
 	font-size: 100%;
+}
+
+* {
+	font-family: "Monterserrat", sans-serif;
 }
 
 body {
@@ -37,5 +40,29 @@ p {
 
 .desc-container {
 	text-align: center;
+}
+
+.search-container {
+	display: flex;
+	justify-content: center;
+	height: calc(26px + (60 - 26) * ((100vw - 280px) / (1600 - 280)));
+	width: calc(260px + (750 - 260) * ((100vw - 280px) / (1600 - 280)));
+	padding-bottom: 15px;
+}
+
+.input-box {
+	height: 100%;
+	width: 100%;
+	font-size: calc(14px + (26 - 14) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
+	outline: none;
+	padding-right: 6px;
+	padding-left: 6px;
+	border-radius: 5px;
+	border: 2px solid var(--white-0);
+	background-color: var(--white-0);
+}
+
+.input-box:focus {
+	border: 2px solid var(--blue-0);
 }
 
