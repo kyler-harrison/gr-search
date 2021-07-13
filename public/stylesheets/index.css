@@ -47,7 +47,8 @@ p {
 	justify-content: center;
 	height: calc(26px + (60 - 26) * ((100vw - 280px) / (1600 - 280)));
 	width: calc(260px + (750 - 260) * ((100vw - 280px) / (1600 - 280)));
-	padding-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .input-box {
@@ -64,5 +65,33 @@ p {
 
 .input-box:focus {
 	border: 2px solid var(--blue-0);
+}
+
+.search-button-container {
+	display: flex;
+	justify-content: center;
+	height: calc(30px + (40 - 30) * ((100vw - 280px) / (1600 - 280)));
+	width: calc(70px + (90 - 70) * ((100vw - 280px) / (1600 - 280)));
+}
+
+.search-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	font-size: calc(14px + (22 - 14) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
+	font-weight: 600;
+	outline: none;
+	background-color: var(--blue-0);
+	border: 2px solid var(--blue-0);
+	border-radius: 2px;
+	color: var(--black-0);
+	cursor: pointer;
+}
+
+.search-button:hover {
+	border: 2px solid var(--blue-1);
+	background-color: var(--blue-1);
 }
 
