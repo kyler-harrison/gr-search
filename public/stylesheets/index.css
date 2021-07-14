@@ -109,6 +109,11 @@ p {
 	width: 100%;
 }
 
+.main-message-container {
+	width: calc(260px + (750 - 260) * ((100vw - 280px) / (1600 - 280)));
+	text-align: center;
+}
+
 .all-results-container {
 	display: flex;
 	align-items: center;
@@ -128,5 +133,9 @@ p {
 .cover-img {
 	width: calc(130px + (250 - 130) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
 	height: auto;
+}
+
+.text {
+	color: var(--white-0);
 }
 
