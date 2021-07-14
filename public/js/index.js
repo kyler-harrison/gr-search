@@ -77,7 +77,7 @@ $(document).on("keypress", (key) => {
 	}
 });
 
-$(".ask-button").click(() => {
+$(".search-button").click(() => {
 	var input = $(".input-box").val();
 	getQuery(input);
 });
