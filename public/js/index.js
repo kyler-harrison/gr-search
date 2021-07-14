@@ -9,7 +9,7 @@ String.prototype.format = function() {
 }
 
 function getQuery(query) {
-	var gifElem = ".load-gif-container";
+	var gifElem = ".load-gif";
 	$(gifElem).show();
 
 	var resultsContainer = ".all-results-container";
