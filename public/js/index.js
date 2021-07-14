@@ -11,9 +11,6 @@ String.prototype.format = function() {
 function getQuery(query) {
 	var gifElem = ".load-gif-container";
 	$(gifElem).show();
-	
-	var messageContainer = ".main-message-container";
-	$(messageContainer).empty();
 
 	var resultsContainer = ".all-results-container";
 	$(resultsContainer).empty();
@@ -29,10 +26,7 @@ function getQuery(query) {
 		success: (result) => {
 			$(gifElem).hide();
 
-			var message = result.message;
 			var resStatus = result.resStatus;
-			var returnMsgElem = "<div class='main-message-container'><div class='main-message'>" + message + "</div></div>";
-			$(messageContainer).append(returnMsgElem);
 
 			if (resStatus == "valid") {
 				var dataArr = result.dataArr;
@@ -44,6 +38,13 @@ function getQuery(query) {
 						authorsStr = dataObj["authors"][0];
 					}
 
+					var dataContainer = ` 
+					<div class="result-container">
+						<img src="{0}" class="cover-img"/>
+					</div>
+					`.format(dataObj["cover_img_ref"]);
+
+					/*
 					var dataContainer = `
 					<div class="result-container">
 						<div class="data-left">
@@ -60,6 +61,7 @@ function getQuery(query) {
 							</div>
 						</div>
 					</div>`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"], dataObj["amz_link"]);
+					*/
 
 					$(resultsContainer).append(dataContainer);
 				}
