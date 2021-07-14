@@ -19,16 +19,7 @@ body {
 	margin: 0;
 	overflow-x: hidden;
 	background-color: var(--black-0);
-	font-size: calc(14px + (26 - 14) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
-}
-
-h1 {
-	color: var(--white-0);
-}
-
-p {
-	color: var(--white-1);
-	padding: 1%;
+	font-size: calc(15px + (26 - 15) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
 }
 
 .main-container {
@@ -40,6 +31,10 @@ p {
 
 .desc-container {
 	text-align: center;
+}
+
+.desc-text {
+	color: var(--white-0);
 }
 
 .search-container {
@@ -54,7 +49,7 @@ p {
 .input-box {
 	height: 100%;
 	width: 100%;
-	font-size: calc(14px + (26 - 14) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
+	font-size: calc(15px + (26 - 15) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
 	outline: none;
 	padding-right: 6px;
 	padding-left: 6px;
@@ -80,7 +75,7 @@ p {
 	align-items: center;
 	height: 100%;
 	width: 100%;
-	font-size: calc(14px + (22 - 14) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
+	font-size: calc(15px + (22 - 15) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
 	font-weight: 600;
 	outline: none;
 	background-color: var(--blue-0);
@@ -128,7 +123,7 @@ p {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	margin-bottom: 15px;
+	margin-bottom: 60px;
 }
 
 .cover-img {
@@ -136,7 +131,26 @@ p {
 	height: auto;
 }
 
+.text, .sub-text {
+	font-size: calc(15px + (22 - 15) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
+}
+
 .text {
 	color: var(--white-0);
 }
+
+.sub-text {
+	color: var(--white-1);
+}
+
+.text-container {
+	width: calc(260px + (750 - 260) * ((100vw - 280px) / (1600 - 280)));
+	margin-top: 7px;
+}
+
+.book-desc {
+	max-height: calc(175px + (300 - 175) * ((100vw - 280px) / (1600 - 280)));
+	overflow: hidden;
+}
+
 
