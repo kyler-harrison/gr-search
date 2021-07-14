@@ -15,6 +15,9 @@ function getQuery(query) {
 	var resultsContainer = ".all-results-container";
 	$(resultsContainer).empty();
 
+	var messageContainer = ".main-message-container";
+	$(messageContainer).empty();
+
 	if (query.length == 0) {
 		query = "$random$";
 	} 
@@ -41,8 +44,11 @@ function getQuery(query) {
 					var dataContainer = ` 
 					<div class="result-container">
 						<img src="{0}" class="cover-img"/>
+						<div class="title-container">
+							<h2 class="text">{1}</h2>
+						</div>
 					</div>
-					`.format(dataObj["cover_img_ref"]);
+					`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"]);
 
 					/*
 					var dataContainer = `
@@ -67,8 +73,12 @@ function getQuery(query) {
 				}
 
 				$(resultsContainer).append("<div class='contact'>Contact us bookbotapp@gmail.com</div>");
+			} else {
+				var message = result.message;
+				var returnMsgElem = "<div class='main-message-container'><p class='text'>" + message + "</p></div>";
+				$(messageContainer).append(returnMsgElem);
 			}
-		}
+		} 
 	});
 }
 
