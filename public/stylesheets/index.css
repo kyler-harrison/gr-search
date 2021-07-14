@@ -105,6 +105,7 @@ p {
 }
 
 .load-gif {
+	display: none;
 	height: 100%;
 	width: 100%;
 }
