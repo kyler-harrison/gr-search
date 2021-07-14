@@ -95,3 +95,17 @@ p {
 	background-color: var(--blue-1);
 }
 
+.load-gif-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2px;
+	width: calc(150px + (350 - 150) * ((100vw - 280px) / (1600 - 280)));  /* thanks https://css-tricks.com/snippets/css/fluid-typography/ */
+	overflow: hidden;
+}
+
+.load-gif {
+	height: 100%;
+	width: 100%;
+}
+
