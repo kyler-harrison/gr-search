@@ -39,7 +39,7 @@ const limiter = rateLimit({
 	windowMs: 1000,
 	max: 2,
 	handler: (req, res) => {
-		console.log("exceeded");
+		console.log("rate limit exceeded");
 		res.render("rate.ejs");
 	}
 });
