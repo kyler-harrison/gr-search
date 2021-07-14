@@ -44,30 +44,17 @@ function getQuery(query) {
 					var dataContainer = ` 
 					<div class="result-container">
 						<img src="{0}" class="cover-img"/>
-						<div class="title-container">
-							<h2 class="text">{1}</h2>
+						<div class="text-container">
+							<div class="text" style="font-weight: bold">{1}</div>
+						</div>
+						<div class="text-container">
+							<div class="sub-text">{2}</div>
+						</div>
+						<div class="text-container book-desc">
+							<div class="text">{3}</div>
 						</div>
 					</div>
-					`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"]);
-
-					/*
-					var dataContainer = `
-					<div class="result-container">
-						<div class="data-left">
-							<div class="img-container">
-								<img src="{0}" class="cover-img"/>
-							</div>
-						</div>
-						<div class="data-right">
-							<div class="book-title">{1}</div>
-							<div class="middle-data">
-								<div class="book-author">{2}</div>
-								<div class="book-description">{3}</div>
-								<div class="fade-box"></div>
-							</div>
-						</div>
-					</div>`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"], dataObj["amz_link"]);
-					*/
+					`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"]);
 
 					$(resultsContainer).append(dataContainer);
 				}
