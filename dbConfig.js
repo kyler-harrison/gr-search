@@ -4,9 +4,7 @@ const uri = "mongodb://localhost:" + process.env.MONGO_URI + "/";
 const dbName = "bookData";
 
 var database = {};
-
 var dbClient = mongoDriver.MongoClient(uri, {useUnifiedTopology: true, useNewUrlParser: true});
-
 var dbo = false;
 
 database.getObjectId = (id) => {
