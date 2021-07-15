@@ -1,3 +1,5 @@
+// NOTE this file is only for testing mongo updates, not used anywhere
+
 const fs = require("fs");
 const mongo = require("mongodb");
 
