@@ -45,7 +45,6 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-
 // routers
 const indexRouter = require("./routes/index");
 
