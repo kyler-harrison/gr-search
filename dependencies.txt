@@ -1,0 +1,29 @@
+=== SYSTEM INSTALLS ===
+(update system)
+sudo apt update
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+
+(nodejs and npm)
+[x] sudo apt install nodejs
+[x] sudo apt install npm
+[x] mongodb (lengthy): https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+^ NOTE that following this also appears to install the other services (like mongoimport)
+^ how to keep running? nohup thing?
+[x] redis: see redisNotes.txt for a full explanation of everything
+[x] pm2 to run node script forever
+
+=== NODE JS MODULES ===
+[x] see package.json
+
+=== PYTHON === 
+[x] python3
+[x] pip3
+[x] nltk
+[x] nltk data downloads
+[x] enchant
+[x] aiohttp
+[x] dotenv
+[x] pytz
+

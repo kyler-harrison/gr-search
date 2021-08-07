@@ -1,0 +1,41 @@
+=== LOGGING ===
+- redirect app output to file is probs fine (simply console.log() anything in code):
+npm run devStart >> log.txt
+- or run it with pm2 or whatever
+
+=== LINODE SERVER CONFIGURATION (on the web app gui) ===
+- sign up
+- create linode -> set options
+- ssh right there
+- ctrl + D to disconnect
+
+=== CONTINUE RUNNING PROCESSES AFTER DISCONNECT ===
+- python do something like (not tested):
+nohup scripty.py &
+- nodejs:
+pm2 start app.js (or whatever it's called)
+pm2 startup ubuntu (starts on reboot)
+pm2 unstartup ubuntu (revert the previous startup cmd)
+- other pm2 commands:
+pm2 show app.js
+pm2 status
+pm2 restart app.js
+pm2 stop app.js
+pm2 logs
+pm2 flush
+- show processes
+ps
+- show port activity
+netstat -l
+- kill process by pid
+ps 
+kill [pid number]
+- kill process by port number (replace 3001 with whatever port number)
+sudo kill -9 $(sudo lsof -t -i:3001)
+
+=== NGINX CONFIGURATION === 
+
+
+=== START IT ALL ===
+nohup python3 server.py >> logs/python_server/log.txt &
+pm2 start server.js >> logs/nodejs_server/log.txt
