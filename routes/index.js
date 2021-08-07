@@ -75,7 +75,7 @@ router.get("/", async (req, res) => {
 	// check if the query was too long
 	if (returnMessage == "max_len") {
 		returnData["resStatus"] = "max_len";
-		returnData["message"] = "That description is too long for me to understand. Try again with something shorter.";
+		returnData["message"] = "That description is too long to process. Try again with something shorter.";
 		res.send(returnData);
 		return;
 	}
@@ -92,7 +92,7 @@ router.get("/", async (req, res) => {
 	// py server returned no valid words
 	if (filteredQueryArray.length == 0) {
 		returnData["resStatus"] = "no_valid"
-		returnData["message"] = "Hmmm... I don't recognize any of those words. Try a different description.";
+		returnData["message"] = "None of those words were recognized. Try a different description.";
 		res.send(returnData);
 		return;
 	}
@@ -162,7 +162,7 @@ router.get("/", async (req, res) => {
 	// no scores returned from db
 	if (finalWordResults.length == 0) {
 		returnData["resStatus"] = "no_results"
-		returnData["message"] = "Hmmm... I don't recognize any of those words. Try a different description.";
+		returnData["message"] = "None of those words were recognized. Try a different description.";
 		res.send(returnData);
 		return;
 	}
@@ -219,7 +219,7 @@ router.get("/", async (req, res) => {
 
 	// clean up and return data
 	returnData["resStatus"] = "valid";
-	returnData["message"] = "I think you might like...";
+	returnData["message"] = "You might like...";
 	returnData["dataArr"] = finalResults;
 	res.send(returnData);
 	return;

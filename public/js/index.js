@@ -9,14 +9,14 @@ String.prototype.format = function() {
 }
 
 function getQuery(query) {
-	var gifElem = ".load-gif-container";
+	var gifElem = ".load-gif";
 	$(gifElem).show();
-	
-	var messageContainer = ".main-message-container";
-	$(messageContainer).empty();
 
 	var resultsContainer = ".all-results-container";
 	$(resultsContainer).empty();
+
+	var messageContainer = ".main-message-container";
+	$(messageContainer).empty();
 
 	if (query.length == 0) {
 		query = "$random$";
@@ -29,10 +29,7 @@ function getQuery(query) {
 		success: (result) => {
 			$(gifElem).hide();
 
-			var message = result.message;
 			var resStatus = result.resStatus;
-			var returnMsgElem = "<div class='main-message-container'><div class='main-message'>" + message + "</div></div>";
-			$(messageContainer).append(returnMsgElem);
 
 			if (resStatus == "valid") {
 				var dataArr = result.dataArr;
@@ -44,29 +41,31 @@ function getQuery(query) {
 						authorsStr = dataObj["authors"][0];
 					}
 
-					var dataContainer = `
+					var dataContainer = ` 
 					<div class="result-container">
-						<div class="data-left">
-							<div class="img-container">
-								<img src="{0}" class="cover-img"/>
-							</div>
+						<img src="{0}" class="cover-img"/>
+						<div class="text-container">
+							<div class="text" style="font-weight: bold">{1}</div>
 						</div>
-						<div class="data-right">
-							<div class="book-title">{1}</div>
-							<div class="middle-data">
-								<div class="book-author">{2}</div>
-								<div class="book-description">{3}</div>
-								<div class="fade-box"></div>
-							</div>
+						<div class="text-container">
+							<div class="sub-text">{2}</div>
 						</div>
-					</div>`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"], dataObj["amz_link"]);
+						<div class="text-container book-desc">
+							<div class="text">{3}</div>
+						</div>
+					</div>
+					`.format(dataObj["cover_img_ref"], dataObj["unfiltered_title"], authorsStr, dataObj["description"]);
 
 					$(resultsContainer).append(dataContainer);
 				}
 
 				$(resultsContainer).append("<div class='contact'>Contact us bookbotapp@gmail.com</div>");
+			} else {
+				var message = result.message;
+				var returnMsgElem = "<div class='main-message-container'><p class='text'>" + message + "</p></div>";
+				$(messageContainer).append(returnMsgElem);
 			}
-		}
+		} 
 	});
 }
 
@@ -77,7 +76,7 @@ $(document).on("keypress", (key) => {
 	}
 });
 
-$(".ask-button").click(() => {
+$(".search-button").click(() => {
 	var input = $(".input-box").val();
 	getQuery(input);
 });

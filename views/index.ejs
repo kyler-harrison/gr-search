@@ -3,31 +3,38 @@
 	<head>
 		<title>A better Goodreads search</title>
 		<meta charset="UTF-8">
-		<meta name="description" content="Content-based Goodreads search. Describe the book you want to read, and relevant book titles will be returned.">
+		<meta name="description" content="A content-based Goodreads search. Describe the book you want to read, and relevant book titles will be returned.">
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="HandheldFriendly" content="true">
-		<link rel="stylesheet" href="C:/Users/kyler/pyguy/bookOracle/final_app0/public/stylesheets/index.css"/>
+		<link rel="stylesheet" href="/stylesheets/index.css"/>
 		<link rel="shortcut icon" type="image/x-icon" href="/imgs/bookbot_icon.ico"/>
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet"/>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-K684EF0MK0"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+		  	function gtag(){dataLayer.push(arguments);}
+		  	gtag('js', new Date());
+
+		  	gtag('config', 'G-K684EF0MK0');
+		</script>
 	</head>
 	<body>
 		<div class="main-container">
-			<div class="page-description-container">
-				<div class="page-description">
-					<h1>A better Goodreads search.</h1>
-					<p>A search engine based on thousands of publicly available reviews of Goodreads books.</p>
-				</div>
+			<div class="desc-container">
+				<h1 class="desc-text">A better Goodreads search</h1>
+				<p class="text">A search engine based on thousands of Goodreads book reviews.</p>
 			</div>
 			<div class="search-container">
 				<input class="input-box" type="text" placeholder="Describe what you'd like to read..." name="search" autocomplete="off">
 			</div>
-			<div class="ask-button-container">
-				<button class="ask-button">Search</button>
+			<div class="search-button-container">
+				<button class="search-button">Search</button>
 			</div>
 			<div class="load-gif-container">
-				<img class="load-gif" src="/imgs/thinking.gif">
+				<img class="load-gif" src="/imgs/loading.gif">
 			</div>
 			<div class="main-message-container"></div>
 			<div class="all-results-container"></div>
